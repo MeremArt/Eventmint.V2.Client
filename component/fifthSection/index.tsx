@@ -22,8 +22,8 @@ export default function FifthSection() {
                 "https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png"
               }
               alt="logo"
-              width={50}
-              height={50}
+              width={100}
+              height={100}
             />
             <div className="flex items-center gap-4">
               <Image src={"/Instagram.svg"} alt="logo" width={56} height={56} />
