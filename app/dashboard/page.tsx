@@ -1,23 +1,61 @@
-import Grid from "@mui/material/Grid";
+"use client";
 
+import dynamic from "next/dynamic";
+
+import Grid from "@mui/material/Grid";
+import { useEffect, useState } from "react";
 import { gridSpacing } from "../components/store/constant";
 import Balance from "../components/cards/balance/Balance";
 import Sales from "../components/cards/sales/Sales";
 import Orders from "../components/cards/orders/Orders";
 import Earning from "../components/cards/Earnings/Earning";
 import Customers from "../components/cards/customers/Customers";
+import CircularProgress from "@mui/material/CircularProgress";
 import Revenue from "../components/cards/revenue/Revenue";
-import Chart from "../components/chart/Chart";
-import TransactionCard from "../components/cards/Transaction/TransactionCard";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useRouter } from "next/navigation";
+// Dynamically import Chart with SSR disabled
+const Chart = dynamic(() => import("../components/chart/Chart"), {
+  ssr: false,
+});
+const TransactionCard = dynamic(
+  () => import("../components/cards/Transaction/TransactionCard"),
+  { ssr: false }
+);
 
 const Page = () => {
-  // Check if window is defined (running in the browser)
-  if (typeof window !== "undefined") {
-    // Your code that uses window
-    toast.success("Success message");
+  const [isLoading, setLoading] = useState(true);
+  const { connected } = useWallet();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!connected) {
+      toast.error("Wallet not connected! Redirecting to the home page...");
+      const timer = setTimeout(() => {
+        router.push("/");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setLoading(false);
+    }
+  }, [connected, router]);
+
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (
