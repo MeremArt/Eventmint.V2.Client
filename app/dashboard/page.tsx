@@ -22,13 +22,12 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!connected) {
+    if (typeof window !== "undefined" && !connected) {
       toast.error("Wallet not connected! Redirecting to the home page...");
       const timer = setTimeout(() => {
         router.push("/");
       }, 3000);
 
-      // Clean up the timer if the component unmounts
       return () => clearTimeout(timer);
     } else {
       setLoading(false);
