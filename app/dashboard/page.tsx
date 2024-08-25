@@ -19,18 +19,17 @@ const Page = () => {
   const [isLoading, setLoading] = useState(true);
   const { connected } = useWallet();
   const router = useRouter();
-  // useEffect(() => {
-  //   if (!connected) {
-  //     toast.error("Wallet not connected! Redirecting to the home page...");
-  //     // Delay the redirect to allow the toast to display
-  //     const timer = setTimeout(() => {
-  //       router.push("/");
-  //     }, 3000); // Adjust the delay as needed (e.g., 3 seconds)
 
-  //     // Cleanup the timer on component unmount
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [connected, router]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && !connected) {
+      toast.error("Wallet not connected! Redirecting to the home page...");
+      const timer = setTimeout(() => {
+        router.push("/");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [connected, router]);
   return (
     <>
       <Grid className="mt-2" container spacing={gridSpacing}>
