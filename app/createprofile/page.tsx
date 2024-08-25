@@ -59,7 +59,7 @@ const Page: React.FC = () => {
     } catch (error) {
       console.error("image upload failed", error);
       toast.error("failed to upload image");
-      return null;
+      throw new Error("Image upload failed");
     }
   };
 
@@ -84,7 +84,7 @@ const Page: React.FC = () => {
 
       const _id = publicKey.toString();
       const image = profilePicture;
-        console.log(image,"profileImage")
+      console.log(image, "profileImage");
       // const profileData = { _id, firstName, lastName, email, bio, image };
 
       const profileData: any = {
