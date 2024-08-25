@@ -20,16 +20,6 @@ const Page = () => {
   const { connected } = useWallet();
   const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && !connected) {
-      toast.error("Wallet not connected! Redirecting to the home page...");
-      const timer = setTimeout(() => {
-        router.push("/");
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [connected, router]);
   return (
     <>
       <Grid className="mt-2" container spacing={gridSpacing}>
