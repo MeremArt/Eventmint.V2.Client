@@ -15,13 +15,44 @@ import { useRouter } from "next/navigation";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Page = () => {
   const [isLoading, setLoading] = useState(true);
   const { connected } = useWallet();
   const router = useRouter();
 
+  useEffect(() => {
+    if (!connected) {
+      toast.error("Wallet not connected! Redirecting to the home page...");
+      const timer = setTimeout(() => {
+        router.push("/");
+      }, 3000);
+
+      // Clean up the timer if the component unmounts
+      return () => clearTimeout(timer);
+    } else {
+      setLoading(false);
+    }
+  }, [connected, router]);
+
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <>
+      <ToastContainer />
       <Grid className="mt-2" container spacing={gridSpacing}>
         <Grid item xs={12} sm={6} md={3}>
           <Balance />
