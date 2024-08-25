@@ -1,7 +1,7 @@
 // components/messages/Messages.tsx
 import React from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import Message from "../message/message";
+import Message from "../message/Message";
 import "./messages.css";
 
 interface MessageProps {
