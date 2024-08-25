@@ -13,7 +13,14 @@ export default function NavBar(prop: NavBarProps) {
     <div className="max-w-[1440px] h-[64px] px-[64px] mmd:px-[32px] mx-auto relative z-10">
       <div className="flex justify-between items-center">
         <div className="">
-          <Image src={"/logo.png"} alt="logo" width={50} height={50} />
+          <Image
+            src={
+              "https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png"
+            }
+            alt="logo"
+            width={100}
+            height={100}
+          />
         </div>
         <div className="flex gap-4">
           <div className="flex items-center gap-4">
