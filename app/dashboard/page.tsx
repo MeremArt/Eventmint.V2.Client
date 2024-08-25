@@ -1,5 +1,3 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
 import Grid from "@mui/material/Grid";
 import CircularProgress from "@mui/material/CircularProgress";
 import { gridSpacing } from "../components/store/constant";
@@ -11,44 +9,11 @@ import Customers from "../components/cards/customers/Customers";
 import Revenue from "../components/cards/revenue/Revenue";
 import Chart from "../components/chart/Chart";
 import TransactionCard from "../components/cards/Transaction/TransactionCard";
-import { useRouter } from "next/navigation";
-import { useWallet } from "@solana/wallet-adapter-react";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Page = () => {
-  const [isLoading, setLoading] = useState(true);
-  const { connected } = useWallet();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && !connected) {
-      toast.error("Wallet not connected! Redirecting to the home page...");
-      const timer = setTimeout(() => {
-        router.push("/");
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    } else {
-      setLoading(false);
-    }
-  }, [connected, router]);
-
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <CircularProgress />
-      </div>
-    );
-  }
-
   return (
     <>
       <ToastContainer />
