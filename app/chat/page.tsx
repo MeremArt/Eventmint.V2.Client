@@ -1,7 +1,13 @@
 // app/chat/page.tsx
 "use client";
 
-import React, { useEffect, useState, FormEvent, KeyboardEvent } from "react";
+import React, {
+  useEffect,
+  useState,
+  FormEvent,
+  KeyboardEvent,
+  Suspense,
+} from "react";
 import queryString from "query-string";
 import io, { Socket } from "socket.io-client";
 import { useSearchParams } from "next/navigation";
@@ -93,13 +99,15 @@ const Page: React.FC = () => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room} />
-        <Messages messages={messages} name={name} socket={socket} />
-        <Input
-          message={message}
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <InfoBar room={room} />
+          <Messages messages={messages} name={name} socket={socket} />
+          <Input
+            message={message}
+            setMessage={setMessage}
+            sendMessage={sendMessage}
+          />
+        </Suspense>
       </div>
     </div>
   );
