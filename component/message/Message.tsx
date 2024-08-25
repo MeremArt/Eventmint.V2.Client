@@ -21,7 +21,7 @@ const linkify = (text: string) => {
 };
 
 const Message: React.FC<MessageProps> = ({
-  message: { user, text, reactions = [] },
+  message: { id, user, text, reactions = [] },
   name,
   socket,
 }) => {
