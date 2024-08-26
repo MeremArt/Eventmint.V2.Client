@@ -27,21 +27,27 @@ const TransactionCard = dynamic(
 
 const Page = () => {
   const [isLoading, setLoading] = useState(true);
-  const { connected } = useWallet();
+  const { connected, publicKey } = useWallet();
   const router = useRouter();
 
   useEffect(() => {
-    if (!connected) {
+    const storedPublicKey = localStorage.getItem("publicKey");
+
+    if (publicKey) {
+      localStorage.setItem("publicKey", publicKey.toString());
+      setLoading(false); // Stop loading when the wallet is connected
+    } else if (storedPublicKey) {
+      // Use the public key from localStorage if it's available
+      setLoading(false);
+    } else {
+      setLoading(false); // Stop loading and show error if wallet is not connected and no key in localStorage
       toast.error("Wallet not connected! Redirecting to the home page...");
       const timer = setTimeout(() => {
         router.push("/");
       }, 3000);
-
       return () => clearTimeout(timer);
-    } else {
-      setLoading(false);
     }
-  }, [connected, router]);
+  }, [publicKey, router]);
 
   if (isLoading) {
     return (
