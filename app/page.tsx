@@ -25,10 +25,10 @@ export default function Home() {
       {/* Mobile view coming soon message */}
       <div className="md:hidden h-full w-full absolute bg-white dark:bg-slate-800 text-black dark:text-white z-50 flex items-center justify-center">
         <div className="px-4">
-          <h1 className="text-xl lg:text-2xl font-bold text-action mb-2">
+          <h1 className="text-2xl lg:text-2xl font-bold text-action mb-2">
             Mobile view coming soon
           </h1>
-          <p className="text-base lg:text-xl max-w-xs">
+          <p className="text-base lg:text-2xl max-w-xs">
             For Best experience, use a desktop device
           </p>
         </div>

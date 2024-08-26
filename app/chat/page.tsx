@@ -8,6 +8,7 @@ import React, {
   KeyboardEvent,
   Suspense,
 } from "react";
+
 import queryString from "query-string";
 import io, { Socket } from "socket.io-client";
 import { useSearchParams } from "next/navigation";
@@ -99,7 +100,7 @@ const Page: React.FC = () => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense>
           <InfoBar room={room} />
           <Messages messages={messages} name={name} socket={socket} />
           <Input
