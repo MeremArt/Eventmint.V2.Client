@@ -1,4 +1,3 @@
-// app/layout.tsx
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -14,13 +13,24 @@ export const metadata: Metadata = {
   title: "Eventmint",
   description: "Enhancing Events with interactions",
   openGraph: {
-    images:
-      "/https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png",
+        width: 1200,
+        height: 630,
+        alt: "Eventmint Logo",
+      },
+    ],
   },
   twitter: {
     title: "Eventmint",
     description: "Enhancing Events with interactions",
-
+    images: [
+      {
+        url: "https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png",
+        alt: "Eventmint Logo",
+      },
+    ],
     creator: "@eventmint_",
   },
 };
@@ -28,6 +38,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </head>
       <body className={inter.className}>
         <ReduxProvider>
           <AppWalletProvider>
