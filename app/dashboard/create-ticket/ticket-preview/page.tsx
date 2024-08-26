@@ -32,22 +32,7 @@ export default function Page() {
     upload: any;
   }
 
-  const uploadFileToCloudinary = async (base64Image: string) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", base64Image);
-      formData.append("upload_preset", UPLOAD_PRESET);
   
-      const response = await axios.post(CLOUDINARY_UPLOAD_URL, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-        console.log(response.data.secure_url,'WHAT I AM LOOKING FOR')
-      return( response.data.secure_url); // URL of the uploaded image
-    } catch (error) {
-      console.error("Error uploading image", error);
-      return undefined;
-    }
-  };
   
   
 
@@ -125,6 +110,7 @@ export default function Page() {
       toast.success("Event Created!");
     } catch (err: any) {
       const errorMessage = err?.message;
+      console.log(err,'LETS SEE');
 
       toast.error(errorMessage, {
         position: "top-right",
