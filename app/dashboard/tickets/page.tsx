@@ -20,7 +20,7 @@ export default function Page() {
   console.log(events, "events");
 
   if (events.length === 0) {
-    return <div>No events created yet.</div>;
+    return <div className="text-white">No events created yet.</div>;
   }
 
   const handlePageChange = (event: any, value: any) => {

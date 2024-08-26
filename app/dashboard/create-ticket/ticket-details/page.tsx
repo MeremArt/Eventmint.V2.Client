@@ -226,19 +226,19 @@ export default function Page() {
                   input={<CustomOutlinedInput />}
                   onChange={handleSelectChange}
                 >
-                  <MenuItem value={"category1"}>
+                  <MenuItem value={"Parties & Socials"}>
                     <p className="text-purpletwo"> 🎉 Parties & Socials</p>
                   </MenuItem>
-                  <MenuItem value={"category2"}>
+                  <MenuItem value={" Food & Drink"}>
                     <p className="text-purpletwo"> 🍴 Food & Drink</p>
                   </MenuItem>
-                  <MenuItem value={"category3"}>
+                  <MenuItem value={"Charity & Causes"}>
                     <p className="text-purpletwo"> 🌟 Charity & Causes</p>
                   </MenuItem>
-                  <MenuItem value={"category4"}>
+                  <MenuItem value={"Tech & Innovation"}>
                     <p className="text-purpletwo"> 💻 Tech & Innovation</p>
                   </MenuItem>
-                  <MenuItem value={"category4"}>
+                  <MenuItem value={"Education & Workshops"}>
                     <p className="text-purpletwo"> 🎓 Education & Workshops</p>
                   </MenuItem>
                 </Select>
