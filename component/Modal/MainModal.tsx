@@ -93,31 +93,31 @@ export default function MainModal({ closeModal }: MainModalProps) {
   return (
     <div className="backdrop">
       <div className="modal-content">
-        <div className="relative">
+        <div className="relative mxs:hidden">
           <Image
-            className=""
+            className="mxs:hidden"
             src={SecondModal}
             alt="Modal"
             width={415}
             height={140}
           />
         </div>
-        <div className="relative px-[32px] py-[24px] flex flex-col gap-[24px] items-center justify-center bg-white-opacity-20 backdrop-blur-75 rounded-r-[12px]">
+        <div className="relative px-[32px] mxs:px-0 py-[24px] mxs:py-[12px] flex flex-col gap-[24px] items-center justify-center bg-white-opacity-20 backdrop-blur-75 rounded-r-[12px]">
           <Image
-            className="absolute rounded-r-[12px]"
+            className="absolute rounded-r-[12px] mxs:rounded-[12px]"
             src={ModalBlur}
             alt="modal-blur"
             fill
           />
           <div
-            className="flex justify-center relative ml-96  py-[10px]"
+            className="flex justify-center relative ml-96 mxs:ml-60 py-[10px]"
             onClick={closeModal}
           >
             <MdCancel />
           </div>
           <div className="flex justify-center relative">
             <Image
-              className="relaive "
+              className="relative"
               src={smiley}
               alt="smiley"
               width={120}
@@ -133,7 +133,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
               and let’s get started.
             </Typography>
           </div>
-          <div className=" relative flex justify-center mt-4 space-x-4">
+          <div className=" relative flex justify-center mt-4 space-x-4 mxxxs:flex-col-reverse mxxxs:items-center mxxxs:gap-2">
             <WalletMultiButton className="bg-[#c2c2cccb] hover:bg-black transition-all duration-200 rounded-lg relative " />
 
             <Link href="/event">

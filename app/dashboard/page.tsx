@@ -12,24 +12,36 @@ import Earning from "../components/cards/Earnings/Earning";
 import Customers from "../components/cards/customers/Customers";
 import CircularProgress from "@mui/material/CircularProgress";
 import Revenue from "../components/cards/revenue/Revenue";
+import Chart from "../components/chart/Chart";
+import TransactionCard from "../components/cards/Transaction/TransactionCard";
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/navigation";
 // Dynamically import Chart with SSR disabled
-const Chart = dynamic(() => import("../components/chart/Chart"), {
-  ssr: false,
-});
-const TransactionCard = dynamic(
-  () => import("../components/cards/Transaction/TransactionCard"),
-  { ssr: false }
-);
+
+
+ 
+
+
 
 const Page = () => {
   const [isLoading, setLoading] = useState(true);
   const { connected, publicKey } = useWallet();
   const router = useRouter();
 
+
+  const Chart = dynamic(() => import("../components/chart/Chart"), {
+    ssr: false,
+  });
+  const TransactionCard = dynamic(
+    () => import("../components/cards/Transaction/TransactionCard"),
+    { ssr: false }
+  );
+
+  // useEffect(() => {
+  //   const storedPublicKey = localStorage.getItem("publicKey");
   // useEffect(() => {
   //   const storedPublicKey = localStorage.getItem("publicKey");
 

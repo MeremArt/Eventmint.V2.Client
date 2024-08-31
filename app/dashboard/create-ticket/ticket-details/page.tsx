@@ -15,46 +15,28 @@ import TicketComponent from "@/component/ticketComponent";
 import Picture from "@/component/svgs/picture";
 import { Button } from "@/component/button";
 import ArrowRight from "@/component/svgs/arrowRight";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ticketAction } from "@/mainStore/reduxSlices/ticketDetailSlice";
 import { useRouter } from "next/navigation";
-import DatePicker from "react-date-picker";
-import axios from "axios";
+
 
 export default function Page() {
-  const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/dtfvdjvyr/image/upload`;
-  const UPLOAD_PRESET = "ml_default";
   const dispatch = useDispatch();
-
+  const ticketState = useSelector((state: any) => state.ticketDetail);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  
+  const {
+    ticketName,
+    ticketDescription,
+    category,
+    amount,
+    quantity,
+    image,
+    location,
+    date,
+  } = ticketState;
 
-  const [formDetails, setFormDetails] = useState({
-    ticketName: "",
-    ticketDescription: "",
-    category: "",
-    amount: "",
-    quantity: "",
-    coverImage: null as string | null,
-    coverImageName: "",
-    location: "",
-  });
-  // const uploadFileToCloudinary = async (base64Image: string) => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("file", base64Image);
-  //     formData.append("upload_preset", UPLOAD_PRESET);
-
-  //     const response = await axios.post(CLOUDINARY_UPLOAD_URL, formData, {
-  //       headers: { "Content-Type": "multipart/form-data" },
-  //     });
-  //       console.log(response.data.secure_url,'WHAT I AM LOOKING FOR')
-  //     return( response.data.secure_url); // URL of the uploaded image
-  //   } catch (error) {
-  //     console.error("Error uploading image", error);
-  //     return undefined;
-  //   }
-  // };
   const CustomOutlinedInput = styled(OutlinedInput)(() => ({
     "& .MuiOutlinedInput-notchedOutline": {
       borderRadius: 16,
@@ -65,8 +47,18 @@ export default function Page() {
     },
     "& .MuiOutlinedInput-input": {
       color: "#E0FFE0",
+     
     },
   }));
+
+  const CustomMenuProps = {
+    PaperProps: {
+      sx: {
+        backgroundColor: "black", 
+        borderRadius: "8px", 
+      },
+    },
+  };
 
   const CustomInputLabel = styled(InputLabel)(() => ({
     fontSize: "1rem",
@@ -79,28 +71,42 @@ export default function Page() {
     },
   }));
 
-  // console.log(formDetails);
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormDetails((prevDetails) => ({
-      ...prevDetails,
-      [id]: value,
-    }));
+    switch (id) {
+      case "ticketName":
+        dispatch(ticketAction.updateTicketName(value));
+        break;
+      case "ticketDescription":
+        dispatch(ticketAction.updateTicketDescription(value));
+        break;
+      case "category":
+        dispatch(ticketAction.updateCategory(value));
+        break;
+      case "amount":
+        dispatch(ticketAction.updateAmount(value));
+        break;
+      case "quantity":
+        dispatch(ticketAction.updateQuantity(value));
+        break;
+      case "location":
+        dispatch(ticketAction.updateLocation(value));
+        break;
+      default:
+        break;
+    }
   };
 
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormDetails((prevDetails) => ({
-      ...prevDetails,
-      date: e.target.value,
-    }));
+    dispatch(ticketAction.updateDate(e.target.value));
   };
-  const handleSelectChange = (e: any) => {
-    setFormDetails((prevDetails) => ({
-      ...prevDetails,
-      category: e.target.value,
-    }));
+
+  const handleSelectChange = (e:any) => {
+    dispatch(
+      ticketAction.updateCategory(e.target.value)
+    );
   };
+  
 
   const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -112,32 +118,20 @@ export default function Page() {
 
       reader.onload = (event) => {
         const dataURL = event?.target?.result as string;
-        // const getPicture = uploadFileToCloudinary(dataURL);
-
-        setFormDetails((prevDetails) => ({
-          ...prevDetails,
-          coverImage: dataURL,
-          coverImageName: name, // Set both coverImage and coverImageName here
-        }));
+        dispatch(ticketAction.updateImage({ image: dataURL, imageName: name }));
       };
 
       reader.readAsDataURL(file);
     } else {
-      setFormDetails((prevDetails) => ({
-        ...prevDetails,
-        coverImage: null,
-        coverImageName: "",
-      }));
+      dispatch(ticketAction.updateImage({ image: "", imageName: "" }));
     }
   };
 
-  const handleFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+  const handleFormSubmit = (event: any) => {
+    event.preventDefault();
     setIsLoading(true);
-    dispatch(ticketAction.getTicketDetails(formDetails));
-    setIsLoading(false);
     router.push("/dashboard/create-ticket/ticket-preview");
-    console.log("working");
+    setIsLoading(false);
   };
 
   return (
@@ -151,7 +145,7 @@ export default function Page() {
                 label="Ticket Name"
                 variant="outlined"
                 fullWidth
-                value={formDetails.ticketName}
+                value={ticketName}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -186,7 +180,7 @@ export default function Page() {
                 multiline
                 rows={4}
                 fullWidth
-                value={formDetails.ticketDescription}
+                value={ticketDescription}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -222,24 +216,25 @@ export default function Page() {
                 <Select
                   labelId="Select Category"
                   id="category"
-                  value={formDetails.category}
+                  value={category}
                   input={<CustomOutlinedInput />}
                   onChange={handleSelectChange}
+                  MenuProps={CustomMenuProps}
                 >
-                  <MenuItem value={"category1"}>
-                    <p className="text-purpletwo"> 🎉 Parties & Socials</p>
+                  <MenuItem value={"Parties & Socials"}>
+                    <p className="text-[#E0FFE0]"> 🎉 Parties & Socials</p>
                   </MenuItem>
-                  <MenuItem value={"category2"}>
-                    <p className="text-purpletwo"> 🍴 Food & Drink</p>
+                  <MenuItem value={" Food & Drink"}>
+                    <p className="text-[#E0FFE0]"> 🍴 Food & Drink</p>
                   </MenuItem>
-                  <MenuItem value={"category3"}>
-                    <p className="text-purpletwo"> 🌟 Charity & Causes</p>
+                  <MenuItem value={"Charity & Causes"}>
+                    <p className="text-[#E0FFE0]"> 🌟 Charity & Causes</p>
                   </MenuItem>
-                  <MenuItem value={"category4"}>
-                    <p className="text-purpletwo"> 💻 Tech & Innovation</p>
+                  <MenuItem value={"Tech & Innovation"}>
+                    <p className="text-[#E0FFE0]"> 💻 Tech & Innovation</p>
                   </MenuItem>
-                  <MenuItem value={"category4"}>
-                    <p className="text-purpletwo"> 🎓 Education & Workshops</p>
+                  <MenuItem value={"Education & Workshops"}>
+                    <p className="text-[#E0FFE0]"> 🎓 Education & Workshops</p>
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -250,7 +245,7 @@ export default function Page() {
                 label="Enter Amount (SOL)"
                 variant="outlined"
                 fullWidth
-                value={formDetails.amount}
+                value={amount}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -284,7 +279,7 @@ export default function Page() {
                 label="Quantity"
                 variant="outlined"
                 fullWidth
-                value={formDetails.quantity}
+                value={quantity}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -318,7 +313,7 @@ export default function Page() {
                 label="Location"
                 variant="outlined"
                 fullWidth
-                value={formDetails.location}
+                value={location}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -350,8 +345,9 @@ export default function Page() {
               <input
                 type="date"
                 placeholder="Date"
+                value={date}
                 onChange={handleDateChange}
-                className="bg-[#191d2380] text-[#4B5768] mt-1 p-4 block w-full border border-[#4B5768] rounded-[12px] shadow-sm focus:outline-none focus:ring-[#00D300] focus:border-[#00D300] sm:text-sm"
+                className="bg-[#191d2380] text-[#E0FFE0] mt-1 p-4 block w-full border border-[#4B5768] rounded-[12px] shadow-sm focus:outline-none focus:ring-[#00D300] focus:border-[#00D300] sm:text-sm"
               />
             </Box>
           </div>
@@ -359,7 +355,7 @@ export default function Page() {
             <TicketComponent
               id="coverImage"
               onChange={handleCoverImageChange}
-              image={formDetails.coverImage}
+              image={image}
               first="Ticket Image"
               second="Drag and drop your image here to upload"
               third="Supports JPG, JPEG, PNG"

@@ -13,7 +13,7 @@ import WhyChoose from "@/component/svgs/NewImages/Desktop-Why-Choose-Eventmint-B
 
 export default function ThirdSection() {
   return (
-    <section className="relative w-full pb-[2rem] ">
+    <section className="relative w-full pb-[2rem]">
       <div className="relative mx-auto w-fit">
         <Image
           className="absolute right-0 2xl:right-[-120px]"
@@ -23,10 +23,10 @@ export default function ThirdSection() {
           height={400}
         />
 
-        <div className="relative mx-auto text-white py-[40px] px-[64px]">
+        <div className="relative flex flex-col gap-[24px] mx-auto text-white py-[40px] px-[64px] mxs:px-[16px]">
           <div className="mx-auto pb-[3rem]">
             <div className="mx-auto text-center">
-              <h2 className="text-h-l font-Ubuntu mmd:text-h-ls mb-2">
+              <h2 className="text-h-l font-Ubuntu mmd:text-h-ls mb-2 mxs:text-h-s">
                 Why Choose <span className="text-[#A7FFA7]"> EventMint?</span>
               </h2>
             </div>
@@ -34,11 +34,11 @@ export default function ThirdSection() {
               <Typography
                 variant="body-l"
                 font="Ubuntu"
-                customClassName="font-Ubuntu text-center mmd:text-body-m"
+                customClassName="font-Ubuntu text-center mmd:text-body-m mxs:text-body-xxsx"
                 color="fontBodyMGreyishColor"
                 className=" text-xl mb-2"
               >
-                Here’s why EventMint is the Ideal choice for your event <br />
+                Here’s why EventMint is the Ideal choice for your event
                 planning needs.
               </Typography>
             </div>

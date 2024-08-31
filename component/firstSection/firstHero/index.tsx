@@ -14,7 +14,16 @@ const capitalizeFirstLetter = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 export default function FirstHero({ openModal }: FirstHeroProps) {
-  const words: string[] = ["love", "dream", "imagine"];
+  const words: string[] = [ "Occasions",
+   "Happenings",
+    "Activities",
+    "Gatherings",
+    "Affairs",
+    "Celebrations",
+    "Functions",
+    "Meetings",
+    "Ceremonies",
+    "Festivities",]
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -36,14 +45,14 @@ export default function FirstHero({ openModal }: FirstHeroProps) {
       <div className=" mx-auto max-w-[740px] flex flex-col gap-8  relative mb-[32px]">
         <div>
           <Typography
-            customClassName="text-white font-Ubuntu text-center"
+            customClassName="text-white font-Ubuntu text-center mxs:text-h-r mxs:font-bold"
             variant="h1"
             color="fontBodyWhiteishColor"
           >
-            Events the way you
+           Empowering Sponsor Reach an Engagement at Every
           </Typography>{" "}
           <Typography
-            customClassName="text-gradient font-Ubuntu text-center"
+            customClassName="text-gradient font-Ubuntu text-center mxs:text-h-r mxs:font-bold"
             variant="h1"
           >
             <span>{capitalizeFirstLetter(words[currentWordIndex])}</span>
@@ -51,7 +60,7 @@ export default function FirstHero({ openModal }: FirstHeroProps) {
         </div>
         <div>
           <Typography
-            customClassName="text-white font-Ubuntu text-center"
+            customClassName="text-white font-Ubuntu text-center mxxxs:text-body-msx"
             variant="body-m"
             color="fontBodyWhiteishColor"
           >

@@ -16,20 +16,34 @@ export const ticketSlice = createSlice({
   name: "ticketDetails",
   initialState: initialTicketDetailState,
   reducers: {
-    getTicketDetails: (state, { payload }) => {
-      state.ticketName = payload.ticketName;
-      state.ticketDescription = payload.ticketDescription;
-      state.category = payload.category; 
-      state.amount = payload.amount;
-      state.quantity = payload.quantity; 
-      state.image = payload.coverImage;
-      state.imageName = payload.coverImageName;
-      state.location = payload.location;
-      state.date = payload.date
+    updateTicketName: (state, { payload }) => {
+      state.ticketName = payload;
+    },
+    updateTicketDescription: (state, { payload }) => {
+      state.ticketDescription = payload;
+    },
+    updateCategory: (state, { payload }) => {
+      state.category = payload;
+    },
+    updateAmount: (state, { payload }) => {
+      state.amount = payload;
+    },
+    updateQuantity: (state, { payload }) => {
+      state.quantity = payload;
+    },
+    updateImage: (state, { payload }) => {
+      state.image = payload.image;
+      state.imageName = payload.imageName;
+    },
+    updateLocation: (state, { payload }) => {
+      state.location = payload;
+    },
+    updateDate: (state, { payload }) => {
+      state.date = payload;
     },
     resetTicketDetails: () => initialTicketDetailState,
   },
 });
 
-const ticketAction = ticketSlice.actions;
-export { ticketAction };
+export const ticketAction = ticketSlice.actions;
+export default ticketSlice.reducer;

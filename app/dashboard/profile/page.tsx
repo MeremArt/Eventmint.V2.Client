@@ -58,7 +58,8 @@ const Page = () => {
   }, [publicKey]);
 
   return (
-    <section className="flex gap-4 mt-2">
+    <div className="h-screen">
+      <section className="flex gap-4 mt-2">
       <div className="flex flex-col p-6 w-2/6 items-center gap-1 rounded-[24px] justify-center bg-[rgba(25,29,35,0.5)]">
         <Image
           alt="profile-picture"
@@ -114,6 +115,7 @@ const Page = () => {
         />
       </div>
     </section>
+    </div>
   );
 };
 
