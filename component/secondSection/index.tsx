@@ -18,7 +18,7 @@ export default function SecondSection() {
         />
         <div className="mx-auto">
           <div className="mx-auto text-center">
-            <h2 className="text-h-l font-Ubuntu mb-4">
+            <h2 className="text-h-l font-Ubuntu mb-4 mxs:text-h-xs">
               What we<span className="text-[#A7FFA7]"> Offer</span>
             </h2>
           </div>
@@ -26,12 +26,12 @@ export default function SecondSection() {
             <Typography
               variant="body-l"
               font="Ubuntu"
-              customClassName="font-Ubuntu text-center"
+              customClassName="font-Ubuntu text-center mxs:text-body-xxsx"
               color="fontBodyMGreyishColor"
               className="mb-2"
             >
               {" "}
-              Here are the numerous standout features of EventMint <br /> that
+              Here are the numerous standout features of EventMint  that
               set it apart from the competition
             </Typography>
           </div>
@@ -43,7 +43,7 @@ export default function SecondSection() {
             image="/Interactive Chats.png"
             height={316}
             width={612}
-            customClass="mxl:max-w-[350px]"
+            customClass="mxl:max-w-[350px] mxxxs:left-[-80px] mxxxs:w-[300px]"
           />
           <ReverseInteraction
             header="Reward System"
@@ -51,7 +51,7 @@ export default function SecondSection() {
             image="/Trophy.png"
             height={360}
             width={360}
-            customClass="top-[-120px] mxl:max-w-[350px]"
+            customClass="top-[-120px] mxs:top-[-35px]  mxl:max-w-[350px] mxs:h-[300px] mxs:w-[300px] mxxxs:left-[-100px]"
           />
           <ForwardInteraction
             header="Live Q&A Sessions"
@@ -59,7 +59,7 @@ export default function SecondSection() {
             image="/Mic.png"
             height={360}
             width={360}
-            customClass="top-[-100px] left-[50px] mxl:max-w-[350px]"
+            customClass="top-[-100px] mxs:top-[-70px] left-[50px] mxs:left-[-30px] mxl:max-w-[350px] mxxxs:left-[-100px]"
           />
           <ReverseInteraction
             header="Event Analytics"
@@ -67,7 +67,7 @@ export default function SecondSection() {
             image="/chart-dynamic-color.png"
             height={360}
             width={360}
-            customClass="top-[-60px] mxl:max-w-[300px]"
+            customClass="top-[-60px] mxs:top-[-30px] mxl:max-w-[300px] mxs:h-[250px] mxs:w-[300px] mxxxs:left-[-80px] mxxxs:w-[250px]"
           />
           <ForwardInteraction
             header="Budget Planning Protocol"
@@ -75,7 +75,7 @@ export default function SecondSection() {
             image="/Protocol.png"
             height={360}
             width={360}
-            customClass="top-[-100px] left-[50px] mxl:max-w-[350px]"
+            customClass="top-[-100px] mxs:top-[-70px] left-[50px] mxs:left-[-30px] mxl:max-w-[350px] mxxxs:left-[-100px]"
           />
         </div>
       </div>

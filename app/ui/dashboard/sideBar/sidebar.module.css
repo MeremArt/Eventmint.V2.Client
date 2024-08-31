@@ -1,9 +1,22 @@
 .container {
-  position: sticky;
-  top: 40px;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
 }
 
+.list {
+  flex: 1; 
+  overflow-y: auto; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.formHeight{
+  height: 50px;
+}
 .user {
+  height: 50px; 
   display: flex;
   align-items: center;
   gap: 20px;
@@ -29,9 +42,6 @@
   color: var(--textSoft);
 }
 
-.list {
-  list-style: none;
-}
 
 .cat {
   color: var(--Secondary-Secondary-500, #a0abbb);
@@ -53,7 +63,17 @@
   color: white;
   width: 100%;
 }
-
 .logout:hover {
   background-color: #2e374a;
 }
+
+.list::-webkit-scrollbar {
+  width: 0;  /* Hide scrollbar width */
+  height: 0; /* Hide scrollbar height for horizontal scrollbars */
+}
+
+.list {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+

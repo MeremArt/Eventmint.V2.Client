@@ -111,7 +111,7 @@ const Sidebar: React.FC = async () => {
           </li>
         ))}
       </ul>
-      <form>
+      <form className={styles.formHeight}>
         <button className={styles.logout}>
           <MdLogout />
           Logout

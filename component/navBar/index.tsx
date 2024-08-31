@@ -2,27 +2,29 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../button";
 import Link from "next/link";
+import hamburger from '@/component/svgs/NewImages/menu-01.svg';
+import EventMintLogo from '@/component/svgs/NewImages/EventMintLogo.svg';
 
 type NavBarProps = {
   openModal: () => void;
+  openSmallNav : ()=> void;
 };
 
 export default function NavBar(prop: NavBarProps) {
-  const { openModal } = prop;
+  const { openModal, openSmallNav } = prop;
   return (
-    <div className="max-w-[1440px] h-[64px] px-[64px] mmd:px-[32px] mx-auto relative z-10">
+    <div className="max-w-[1440px] h-[64px] px-[64px] mxs:px-[16px] mmd:px-[32px] mx-auto relative z-10">
       <div className="flex justify-between items-center">
         <div className="">
           <Image
-            src={
-              "https://res.cloudinary.com/dtfvdjvyr/image/upload/v1719802304/event-logo_iyl1ec.png"
-            }
+            src={EventMintLogo}
+            className="mxs:h-[60px]"
             alt="logo"
-            width={100}
-            height={100}
+            width={50}
+            height={50}
           />
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 mxs:hidden">
           <div className="flex items-center gap-4">
             <Link
               className="text-[#A7FFA7] text-h-xxxs font-open-sans"
@@ -58,6 +60,11 @@ export default function NavBar(prop: NavBarProps) {
               size="moreMedium"
               onClick={openModal}
             />
+          </div>
+        </div>
+        <div className="text-white sm:hidden">
+          <div>
+            <Image src={hamburger} alt="hamburger" height={24} width={24} onClick={openSmallNav}/>
           </div>
         </div>
       </div>

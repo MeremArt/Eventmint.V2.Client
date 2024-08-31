@@ -9,6 +9,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+
+      keyframes: {
+        'slide-up-fade-in': {
+          '0%': {
+            transform: 'translateY(20px)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+        },
+      },
+      animation: {
+        'slide-up-fade-in': 'slide-up-fade-in 0.3s ease-out forwards',
+      },
       backgroundColor: {
         "custom-purple-transparent": "rgba(100, 61, 255, 0.05)",
         "white-opacity-20": "rgba(255, 255, 255, 0.20)",
@@ -67,6 +83,7 @@ module.exports = {
         "h-l": ["3.75rem", { lineHeight: "120%", fontWeight: 500 }],
         "h-ls": ["3.5rem", { lineHeight: "120%", fontWeight: 500 }],
         "h-m": ["3.75rem", { lineHeight: "120%", fontWeight: 400 }],
+        "h-mx": ["3.75rem", { lineHeight: "120%", fontWeight: 700 }],
         "h-r": ["2.0625rem", { lineHeight: "121.212%", fontWeight: 500 }],
         "h-s": ["1.75rem", { lineHeight: "121.429%", fontWeight: 500 }],
         "h-xs": ["1.75rem", { lineHeight: "121.429%", fontWeight: 400 }],
@@ -78,6 +95,7 @@ module.exports = {
         "body-l": ["1.75rem", { lineHeight: "121.429%", fontWeight: 400 }],
         "body-m": ["1.4375rem", { lineHeight: "121.739%", fontWeight: 400 }],
         "body-ms": ["1.4375rem", { lineHeight: "121.739%", fontWeight: 300 }],
+        "body-msx": ["1.1875rem", { lineHeight: "121.053%", fontWeight: 300 }],
         "body-r": ["1.25rem", { lineHeight: "120%", fontWeight: 400 }],
         "body-s": ["1.125rem", { lineHeight: "120%", fontWeight: 500 }],
         "body-xs": ["1.125rem", { lineHeight: "120%", fontWeight: 400 }],

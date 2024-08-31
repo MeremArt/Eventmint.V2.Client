@@ -20,7 +20,11 @@ export default function Page() {
   console.log(events, "events");
 
   if (events.length === 0) {
-    return <div className="text-white text-xl">No events created yet.</div>;
+    return (
+        <div className="h-screen w-full flex justify-center items-center">
+           <div className="text-white text-xl">No events created yet.</div>
+        </div>
+    );
   }
 
   const handlePageChange = (event: any, value: any) => {
