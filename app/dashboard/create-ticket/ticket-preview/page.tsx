@@ -32,10 +32,6 @@ export default function Page() {
     upload: any;
   }
 
-  
-  
-  
-
   const {
     ticketName,
     ticketDescription,
@@ -75,7 +71,7 @@ export default function Page() {
     const _id = publicKey?.toBase58();
 
     const formObject = {
-      id: _id,
+      userId: _id,
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -110,7 +106,7 @@ export default function Page() {
       toast.success("Event Created!");
     } catch (err: any) {
       const errorMessage = err?.message;
-      console.log(err,'LETS SEE');
+      console.log(err, "LETS SEE");
 
       toast.error(errorMessage, {
         position: "top-right",
