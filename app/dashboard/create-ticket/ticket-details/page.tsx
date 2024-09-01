@@ -27,8 +27,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const { publicKey } = useWallet();
-  const getUserId = localStorage.getItem('userId');
-  console.log(getUserId,'this is userId');
+  
   const {
     ticketName,
     ticketDescription,

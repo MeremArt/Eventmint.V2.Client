@@ -24,7 +24,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
-  const userId = useSelector((state: any) => state.user.userId);
+  
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -32,8 +32,9 @@ export default function Page() {
     API_KEY_SECRET: any;
     upload: any;
   }
+  const getUserId = localStorage.getItem('publicKey');
   
-  console.log(publicKey?.toString(), 'publickey')
+  
 
   const {
     ticketName,
@@ -77,7 +78,7 @@ export default function Page() {
 
 
     const formObject = {
-      userId,
+      userId:getUserId,
       name: ticketName,
       image: image,
       description: ticketDescription,
