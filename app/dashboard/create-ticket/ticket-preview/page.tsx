@@ -31,6 +31,8 @@ export default function Page() {
     API_KEY_SECRET: any;
     upload: any;
   }
+  
+  console.log(publicKey?.toString(), 'publickey')
 
   const {
     ticketName,
@@ -68,10 +70,11 @@ export default function Page() {
       toast.error("nothing to send");
       return;
     }
-    const _id = publicKey?.toBase58();
-      console.log(_id, 'this is the id');
+    const _id = publicKey;
+      console.log(publicKey?.toString(), 'publickey')
+
     const formObject = {
-      userId: _id,
+      userId: publicKey?.toString(),
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -85,10 +88,11 @@ export default function Page() {
       location: location,
       date: date,
     };
-
+      // console.log(formObject.userId, 'this is formobject userid')
+      // console.log(_id,'_id')
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/event/${formObject.id}`,
+        `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
         formObject,
         {
           headers: {
