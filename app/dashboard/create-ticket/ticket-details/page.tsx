@@ -48,15 +48,14 @@ export default function Page() {
     },
     "& .MuiOutlinedInput-input": {
       color: "#E0FFE0",
-     
     },
   }));
 
   const CustomMenuProps = {
     PaperProps: {
       sx: {
-        backgroundColor: "black", 
-        borderRadius: "8px", 
+        backgroundColor: "black",
+        borderRadius: "8px",
       },
     },
   };
@@ -102,12 +101,9 @@ export default function Page() {
     dispatch(ticketAction.updateDate(e.target.value));
   };
 
-  const handleSelectChange = (e:any) => {
-    dispatch(
-      ticketAction.updateCategory(e.target.value)
-    );
+  const handleSelectChange = (e: any) => {
+    dispatch(ticketAction.updateCategory(e.target.value));
   };
-  
 
   const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -134,7 +130,6 @@ export default function Page() {
     router.push("/dashboard/create-ticket/ticket-preview");
     setIsLoading(false);
     console.log(publicKey?.toString(),'ticket deatail')
-
   };
 
   return (

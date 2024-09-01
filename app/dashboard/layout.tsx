@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import SideBar from "../ui/dashboard/sideBar/SideBar";
 import Navbar from "../ui/dashboard/navBar/Navbar";
 import styles from "./dashboard.module.css";
+
 interface LayoutProps {
   children: ReactNode;
 }

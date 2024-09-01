@@ -5,6 +5,7 @@ import { Typography } from "@/component/typogrphy";
 import { Button } from "@/component/button";
 import ArrowLeft from "@/component/svgs/arrowLeft";
 import ArrowRight from "@/component/svgs/arrowRight";
+import AppWalletProvider from "@/app/components/AppWalletProvider";
 import { usePathname, useRouter } from "next/navigation";
 
 import clsx from "clsx";
@@ -94,7 +95,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </div>
       </nav>
-      <div>{children}</div>
+      <div>
+        <AppWalletProvider>{children}</AppWalletProvider>
+      </div>
     </div>
   );
 };
