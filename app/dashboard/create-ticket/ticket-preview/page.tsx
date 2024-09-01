@@ -73,7 +73,7 @@ export default function Page() {
       return;
     }
     const _id = publicKey?.toBase58();
-
+      console.log(_id, 'this is the id')
     const formObject = {
       id: _id,
       name: ticketName,
