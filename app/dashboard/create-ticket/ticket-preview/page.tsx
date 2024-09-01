@@ -24,6 +24,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
+  const userId = useSelector((state: any) => state.user.userId);
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -70,11 +71,13 @@ export default function Page() {
       toast.error("nothing to send");
       return;
     }
+
     const _id = publicKey;
       console.log(publicKey?.toString(), 'publickey')
 
+
     const formObject = {
-      userId: publicKey?.toString(),
+      userId,
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -88,8 +91,7 @@ export default function Page() {
       location: location,
       date: date,
     };
-      // console.log(formObject.userId, 'this is formobject userid')
-      // console.log(_id,'_id')
+     
     try {
       const response = await axios.post(
         `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
