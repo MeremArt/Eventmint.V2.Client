@@ -68,8 +68,8 @@ export default function Page() {
       toast.error("nothing to send");
       return;
     }
-    const _id = publicKey?.toBase58();
-
+    const _id = publicKey;
+    console.log("this is the id", _id);
     const formObject = {
       userId: _id,
       name: ticketName,
