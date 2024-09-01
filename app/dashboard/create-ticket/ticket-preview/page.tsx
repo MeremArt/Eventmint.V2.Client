@@ -24,7 +24,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
-
+  const userId = useSelector((state: any) => state.user.userId);
   interface cloudinaryInstance {
     CLOUD_NAME: string;
     API_KEY_CLOUD: Number;
@@ -68,10 +68,11 @@ export default function Page() {
       toast.error("nothing to send");
       return;
     }
+
     const _id = publicKey;
-    console.log("this is the id", _id);
+    console.log("this is the id", userId);
     const formObject = {
-      userId: _id,
+      userId,
       name: ticketName,
       image: image,
       description: ticketDescription,

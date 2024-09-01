@@ -96,9 +96,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           )}
         </div>
       </nav>
-      <div>
-        <AppWalletProvider>{children}</AppWalletProvider>
-      </div>
+      <div>{children}</div>
     </div>
   );
 };
