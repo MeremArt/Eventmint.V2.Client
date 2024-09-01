@@ -18,14 +18,15 @@ import ArrowRight from "@/component/svgs/arrowRight";
 import { useDispatch, useSelector } from "react-redux";
 import { ticketAction } from "@/mainStore/reduxSlices/ticketDetailSlice";
 import { useRouter } from "next/navigation";
-
+import { useWallet } from "@solana/wallet-adapter-react";
 
 export default function Page() {
   const dispatch = useDispatch();
   const ticketState = useSelector((state: any) => state.ticketDetail);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  
+  const { publicKey } = useWallet();
+
   const {
     ticketName,
     ticketDescription,
@@ -47,15 +48,14 @@ export default function Page() {
     },
     "& .MuiOutlinedInput-input": {
       color: "#E0FFE0",
-     
     },
   }));
 
   const CustomMenuProps = {
     PaperProps: {
       sx: {
-        backgroundColor: "black", 
-        borderRadius: "8px", 
+        backgroundColor: "black",
+        borderRadius: "8px",
       },
     },
   };
@@ -101,12 +101,9 @@ export default function Page() {
     dispatch(ticketAction.updateDate(e.target.value));
   };
 
-  const handleSelectChange = (e:any) => {
-    dispatch(
-      ticketAction.updateCategory(e.target.value)
-    );
+  const handleSelectChange = (e: any) => {
+    dispatch(ticketAction.updateCategory(e.target.value));
   };
-  
 
   const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -132,6 +129,7 @@ export default function Page() {
     setIsLoading(true);
     router.push("/dashboard/create-ticket/ticket-preview");
     setIsLoading(false);
+    console.log("publlickey", publicKey);
   };
 
   return (
