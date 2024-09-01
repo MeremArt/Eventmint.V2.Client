@@ -20,7 +20,6 @@ export default function FirstHero({ openModal }: FirstHeroProps) {
     "Activities",
     "Gatherings",
     "Celebrations",
-    "Functions",
     "Festivities",
   ];
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
