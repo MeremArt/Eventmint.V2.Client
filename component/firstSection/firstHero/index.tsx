@@ -14,16 +14,14 @@ const capitalizeFirstLetter = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 export default function FirstHero({ openModal }: FirstHeroProps) {
-  const words: string[] = [ "Occasions",
-   "Happenings",
+  const words: string[] = [
+    "Occasions",
+    "Happenings",
     "Activities",
     "Gatherings",
-    "Affairs",
     "Celebrations",
-    "Functions",
-    "Meetings",
-    "Ceremonies",
-    "Festivities",]
+    "Festivities",
+  ];
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -42,14 +40,14 @@ export default function FirstHero({ openModal }: FirstHeroProps) {
         width={884}
         height={884}
       />
-      <div className=" mx-auto max-w-[740px] flex flex-col gap-8  relative mb-[32px]">
+      <div className=" mx-auto max-w-[940px] flex flex-col gap-8  relative mb-[32px]">
         <div>
           <Typography
             customClassName="text-white font-Ubuntu text-center mxs:text-h-r mxs:font-bold"
             variant="h1"
             color="fontBodyWhiteishColor"
           >
-           Empowering Sponsor Reach an Engagement at Every
+            Empowering Sponsor Reach and Engagement at Every
           </Typography>{" "}
           <Typography
             customClassName="text-gradient font-Ubuntu text-center mxs:text-h-r mxs:font-bold"

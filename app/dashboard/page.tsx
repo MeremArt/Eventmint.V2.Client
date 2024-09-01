@@ -21,16 +21,10 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/navigation";
 // Dynamically import Chart with SSR disabled
 
-
- 
-
-
-
 const Page = () => {
   const [isLoading, setLoading] = useState(true);
   const { connected, publicKey } = useWallet();
   const router = useRouter();
-
 
   const Chart = dynamic(() => import("../components/chart/Chart"), {
     ssr: false,
@@ -40,26 +34,24 @@ const Page = () => {
     { ssr: false }
   );
 
-  // useEffect(() => {
-  //   const storedPublicKey = localStorage.getItem("publicKey");
-  // useEffect(() => {
-  //   const storedPublicKey = localStorage.getItem("publicKey");
+  useEffect(() => {
+    const storedPublicKey = localStorage.getItem("publicKey");
 
-  //   if (publicKey) {
-  //     localStorage.setItem("publicKey", publicKey.toString());
-  //     setLoading(false); // Stop loading when the wallet is connected
-  //   } else if (storedPublicKey) {
-  //     // Use the public key from localStorage if it's available
-  //     setLoading(false);
-  //   } else {
-  //     setLoading(false); // Stop loading and show error if wallet is not connected and no key in localStorage
-  //     toast.error("Wallet not connected! Redirecting to the home page...");
-  //     const timer = setTimeout(() => {
-  //       router.push("/");
-  //     }, 3000);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [publicKey, router]);
+    if (publicKey) {
+      localStorage.setItem("publicKey", publicKey.toString());
+      setLoading(false); // Stop loading when the wallet is connected
+    } else if (storedPublicKey) {
+      // Use the public key from localStorage if it's available
+      setLoading(false);
+    } else {
+      setLoading(false); // Stop loading and show error if wallet is not connected and no key in localStorage
+      toast.error("Wallet not connected! Redirecting to the home page...");
+      const timer = setTimeout(() => {
+        router.push("/");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [publicKey, router]);
 
   if (isLoading) {
     return (
