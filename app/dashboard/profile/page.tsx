@@ -46,6 +46,7 @@ const Page = () => {
             localStorage.setItem("profile", JSON.stringify(data.user));
             // Dispatch the user ID to Redux
             const userId = data.user._id;
+            localStorage.setItem('userId',JSON.stringify(userId))
             dispatch(setUserId(userId));
           } else {
             toast.error("failed to fetch user data");

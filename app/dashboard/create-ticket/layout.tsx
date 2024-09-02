@@ -7,6 +7,7 @@ import ArrowLeft from "@/component/svgs/arrowLeft";
 import ArrowRight from "@/component/svgs/arrowRight";
 import AppWalletProvider from "@/app/components/AppWalletProvider";
 import { usePathname, useRouter } from "next/navigation";
+
 import clsx from "clsx";
 
 interface LayoutProps {
@@ -23,9 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const isTicketDetailsPage = () => {
     return isActive("/dashboard/create-ticket/ticket-details");
   };
-  // const redirectToPreviewPage = () => {
-  //   router.push('/dashboard/create-ticket/ticket-preview');
-  // };
+  
 
   const redirectToDetailPage = () => {
     router.push("/dashboard/create-ticket/ticket-details");

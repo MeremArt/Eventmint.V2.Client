@@ -3,7 +3,7 @@ import { Button } from "@/component/button";
 import ArrowLeft from "@/component/svgs/arrowLeft";
 import { Typography } from "@/component/typogrphy";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -24,13 +24,20 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
-  const userId = useSelector((state: any) => state.user.userId);
+  const [getUserid, setGetUserid]= useState<string | null>('')
+
   interface cloudinaryInstance {
     CLOUD_NAME: string;
     API_KEY_CLOUD: Number;
     API_KEY_SECRET: any;
     upload: any;
   }
+  useEffect(()=>{
+  const getUserId = localStorage.getItem('publicKey');
+    setGetUserid(getUserId)
+  },[])
+  
+  
 
   const {
     ticketName,
@@ -70,9 +77,11 @@ export default function Page() {
     }
 
     const _id = publicKey;
-    console.log("this is the id", userId);
+      console.log(publicKey?.toString(), 'publickey')
+
+
     const formObject = {
-      userId,
+      userId:getUserid,
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -86,10 +95,10 @@ export default function Page() {
       location: location,
       date: date,
     };
-
+     
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/event/${formObject.id}`,
+        `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
         formObject,
         {
           headers: {
