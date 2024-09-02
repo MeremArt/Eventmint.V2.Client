@@ -3,7 +3,7 @@ import { Button } from "@/component/button";
 import ArrowLeft from "@/component/svgs/arrowLeft";
 import { Typography } from "@/component/typogrphy";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -24,7 +24,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
-  
+  const [getUserid, setGetUserid]= useState<string | null>('')
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -32,7 +32,10 @@ export default function Page() {
     API_KEY_SECRET: any;
     upload: any;
   }
+  useEffect(()=>{
   const getUserId = localStorage.getItem('publicKey');
+    setGetUserid(getUserId)
+  },[])
   
   
 
@@ -78,7 +81,7 @@ export default function Page() {
 
 
     const formObject = {
-      userId:getUserId,
+      userId:getUserid,
       name: ticketName,
       image: image,
       description: ticketDescription,
