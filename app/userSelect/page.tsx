@@ -82,8 +82,8 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  sponsor ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : ""
-                } text-[var(--Neutral-Neutral-600,#4B5768)] text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
+                  sponsor ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                }  text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 Sponsor
               </Typography>
@@ -120,8 +120,8 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  createEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : ""
-                } text-[var(--Neutral-Neutral-600,#4B5768)] text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
+                  createEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                } text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 Create Event
               </Typography>
@@ -158,8 +158,8 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  inEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : ""
-                } text-[var(--Neutral-Neutral-600,#4B5768)] text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
+                  inEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                }  text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 In-event Chat
               </Typography>
