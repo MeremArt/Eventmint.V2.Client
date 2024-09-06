@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MenuLink from "../../dashboard/sideBar/menuLInk/menuLink";
-import styles from "./sidebar.module.css";
+import styles from './sideBar.module.css'
 import { HiTicket } from "react-icons/hi2";
 import {
   MdDashboard,
