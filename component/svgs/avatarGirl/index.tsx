@@ -40,7 +40,7 @@ export default function AvatarGirl(prop: AvatarGirlProps) {
       className="relative rounded-[24px] w-full opacity-[90%] flex flex-col gap-4"
      
     >
-        <Image className="absolute z-0" src={TicketContainer} alt="" fill/>
+        <Image className="absolute z-0" src={TicketContainer} alt="ticket-container" fill/>
       <div className="px-[16px] pt-[16px]">
         <Image
             className=" relative z-1 rounded-t-[16px]"

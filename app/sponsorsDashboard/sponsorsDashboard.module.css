@@ -1,0 +1,98 @@
+/* .container {
+  display: flex;
+
+  background: var(--Neutral-Neutral-900, #0d0f11);
+}
+
+.menu {
+  flex: 1;
+  background: var(--Neutral-Neutral-800, #191d23);
+  padding: 20px;
+  height: 100vh;
+  border : 1px solid red;
+ 
+}
+
+.content {
+  flex: 4;
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.main {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.side {
+  flex: 1;
+} */
+
+/* Fixes the sidebar to the viewport */
+.container {
+    display: flex;
+    background: var(--Neutral-Neutral-900, #0d0f11);
+    position: relative;
+  }
+  
+  .menu {
+    flex: 1;
+    background: var(--Neutral-Neutral-800, #191d23);
+    padding: 20px;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* 
+    
+    width: 300px;
+    z-index: 1000;  */
+    /* border: 1px solid red; */
+  }
+  
+  .content {
+    flex: 4;
+    padding: 20px;
+    margin-left: 320px;
+    height: 100%;
+    background: var(--Neutral-Neutral-900, #0d0f11);
+    /* border: 1px solid orange; */
+  }
+  
+  .wrapper {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .main {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .side {
+    flex: 1;
+  }
+  
