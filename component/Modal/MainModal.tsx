@@ -35,7 +35,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
       });
 
       setTimeout(() => {
-        router.push('/selectoption');
+        router.push("/selectoption");
       }, 3000);
     } else {
       console.log("Failed to connect wallet");
