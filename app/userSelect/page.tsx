@@ -20,7 +20,7 @@ export default function Page() {
 
   const { sponsor, createEvent, inEvent } = isPageRoute;
 
-  // State to handle the clicked card scaling effect
+
   const [clicked, setClicked] = useState("");
 
   const toSponsorPage = () => {
