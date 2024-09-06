@@ -11,7 +11,7 @@ import createColor from "@/component/svgs/NewImages/new-folder-color.png";
 import isEventColor from "@/component/svgs/NewImages/inevent-color.png";
 import TicketContain from "@/component/svgs/NewImages/Ticket-Container.png";
 
-const Page: React.FC = () => {
+const Page : React.FC = () => {
   const [isPageRoute, setpageRoute] = useState({
     sponsor: false,
     createEvent: false,
