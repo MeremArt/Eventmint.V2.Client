@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { Typography } from "@/component/typogrphy";
@@ -12,6 +12,74 @@ import isEventColor from "@/component/svgs/NewImages/inevent-color.png";
 import TicketContain from "@/component/svgs/NewImages/Ticket-Container.png";
 
 export default function Page() {
+  // useEffect(() => {
+  //   const checkIfUserExists = async () => {
+  //     if (connected && publicKey) {
+  //       try {
+  //         const response = await axios.get(
+  //           `https://eventmint.onrender.com/api/v1/user/exists/${publicKey.toString()}`
+  //         );
+
+  //         if (response.data.data) {
+  //           toast.success("Welcome back! Redirecting to your dashboard...", {
+  //             position: "top-right",
+  //             autoClose: 5000,
+  //             hideProgressBar: false,
+  //             closeOnClick: true,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //             progress: undefined,
+  //           });
+  //           setTimeout(() => {
+  //             router.push(`/dashboard`);
+  //           }, 3000);
+  //         } else {
+  //           toast.error("No profile found. Please create one.", {
+  //             position: "top-right",
+  //             autoClose: 5000,
+  //             hideProgressBar: false,
+  //             closeOnClick: true,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //             progress: undefined,
+  //           });
+  //           setTimeout(() => {
+  //             router.push(`/createprofile`);
+  //           }, 3000);
+  //         }
+  //       } catch (error: any) {
+  //         if (error.response && error.response.status === 404) {
+  //           toast.error("No profile found. Redirecting to create profile...", {
+  //             position: "top-right",
+  //             autoClose: 5000,
+  //             hideProgressBar: false,
+  //             closeOnClick: true,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //             progress: undefined,
+  //           });
+  //           setTimeout(() => {
+  //             router.push(`/createprofile`);
+  //           }, 3000);
+  //         } else {
+  //           console.error("Error checking user existence:", error);
+  //           toast.error("An error occurred. Please try again.", {
+  //             position: "top-right",
+  //             autoClose: 5000,
+  //             hideProgressBar: false,
+  //             closeOnClick: true,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //             progress: undefined,
+  //           });
+  //         }
+  //       }
+  //     }
+  //   };
+
+  //   checkIfUserExists();
+  // }, [connected, publicKey, router]);
+
   const [isPageRoute, setpageRoute] = useState({
     sponsor: false,
     createEvent: false,
@@ -19,7 +87,6 @@ export default function Page() {
   });
 
   const { sponsor, createEvent, inEvent } = isPageRoute;
-
 
   const [clicked, setClicked] = useState("");
 
@@ -82,7 +149,9 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  sponsor ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                  sponsor
+                    ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]"
+                    : "text-[var(--Neutral-Neutral-600,#4B5768)]"
                 }  text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 Sponsor
@@ -120,7 +189,9 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  createEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                  createEvent
+                    ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]"
+                    : "text-[var(--Neutral-Neutral-600,#4B5768)]"
                 } text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 Create Event
@@ -158,7 +229,9 @@ export default function Page() {
             <div>
               <Typography
                 customClassName={`${
-                  inEvent ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]" : "text-[var(--Neutral-Neutral-600,#4B5768)]"
+                  inEvent
+                    ? "text-[var(--Neutral-Neutral-400,#A0ABBB)]"
+                    : "text-[var(--Neutral-Neutral-600,#4B5768)]"
                 }  text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
                 In-event Chat

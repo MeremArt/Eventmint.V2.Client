@@ -23,71 +23,23 @@ export default function MainModal({ closeModal }: MainModalProps) {
   const router = useRouter();
 
   useEffect(() => {
-    const checkIfUserExists = async () => {
-      if (connected && publicKey) {
-        try {
-          const response = await axios.get(
-            `https://eventmint.onrender.com/api/v1/user/exists/${publicKey.toString()}`
-          );
+    if (connected && publicKey) {
+      toast.success("Welcome to Eventmint!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-          if (response.data.data) {
-            toast.success("Welcome back! Redirecting to your dashboard...", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            setTimeout(() => {
-              router.push(`/dashboard`);
-            }, 3000);
-          } else {
-            toast.error("No profile found. Please create one.", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            setTimeout(() => {
-              router.push(`/createprofile`);
-            }, 3000);
-          }
-        } catch (error: any) {
-          if (error.response && error.response.status === 404) {
-            toast.error("No profile found. Redirecting to create profile...", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            setTimeout(() => {
-              router.push(`/createprofile`);
-            }, 3000);
-          } else {
-            console.error("Error checking user existence:", error);
-            toast.error("An error occurred. Please try again.", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-          }
-        }
-      }
-    };
-
-    checkIfUserExists();
+      setTimeout(() => {
+        router.push(`/userselect`);
+      }, 3000);
+    } else {
+      console.log("Failed to connect wallet");
+    }
   }, [connected, publicKey, router]);
 
   return (
@@ -109,12 +61,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
             alt="modal-blur"
             fill
           />
-          <div
-            className="flex justify-center relative ml-96 mxs:ml-60 py-[10px]"
-            onClick={closeModal}
-          >
-            <MdCancel />
-          </div>
+
           <div className="flex justify-center relative">
             <Image
               className="relative"
@@ -136,11 +83,12 @@ export default function MainModal({ closeModal }: MainModalProps) {
           <div className=" relative flex justify-center mt-4 space-x-4 mxxxs:flex-col-reverse mxxxs:items-center mxxxs:gap-2">
             <WalletMultiButton className="bg-[#c2c2cccb] hover:bg-black transition-all duration-200 rounded-lg relative " />
 
-            <Link href="/event">
+            <Link href="">
               <Button
-                label="In-event"
-                customClassName="text-body-xxs font-open-sans bg-custom-purple-gradient rounded-[12px]"
+                label="Leave"
+                customClassName="text-body-xxs font-open-sans bg-gradient-to-b-custom rounded-[12px]"
                 size="moreMedium"
+                onClick={closeModal}
               />
             </Link>
           </div>
