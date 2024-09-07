@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Sidebar from "../ui/sponsorsDashboard/sideBar/SideBar";
 import Navbar from "../ui/dashboard/navBar/Navbar";
+import SponsorNavbar from "../ui/sponsorsDashboard/navBar/SponsorNavbar";
 import styles from "./sponsorsDashboard.module.css";
 
 interface LayoutProps {
@@ -14,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Sidebar />
       </div>
       <div className={styles.content}>
-        <Navbar />
+        <SponsorNavbar />
         {children}
       </div>
     </div>

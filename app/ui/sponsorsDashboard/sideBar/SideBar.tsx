@@ -28,7 +28,7 @@ interface MenuCategory {
 
 const menuItems: MenuCategory[] = [
   {
-    title: "Pages",
+    title: "",
     list: [
       {
         title: "Create Event Ad",
@@ -42,7 +42,7 @@ const menuItems: MenuCategory[] = [
       },
 
       {
-        title: "Ads",
+        title: "Event Ad",
         path: "/sponsorsDashboard/tickets",
         icon: <HiTicket />,
       },
