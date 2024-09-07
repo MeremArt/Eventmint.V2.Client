@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MenuLink from "../../dashboard/sideBar/menuLInk/menuLink";
-import styles from './sideBar.module.css'
+import styles from "./sideBar.module.css";
 import { HiTicket } from "react-icons/hi2";
 import {
   MdDashboard,
@@ -31,8 +31,8 @@ const menuItems: MenuCategory[] = [
     title: "Pages",
     list: [
       {
-        title: "Dashboard",
-        path: "/sponsorsDashboard",
+        title: "Create Event Ad",
+        path: "/sponsorsDashboard/create-ticket",
         icon: <MdDashboard />,
       },
       {
@@ -40,50 +40,11 @@ const menuItems: MenuCategory[] = [
         path: "/sponsorsDashboard/profile",
         icon: <MdSupervisedUserCircle />,
       },
+
       {
-        title: "Create Event",
-        path: "/sponsorsDashboard/create-ticket/ticket-details",
-        icon: <MdShoppingBag />,
-      },
-      {
-        title: "Tickets",
+        title: "Ads",
         path: "/sponsorsDashboard/tickets",
         icon: <HiTicket />,
-      },
-    ],
-  },
-  {
-    title: "Premium",
-    list: [
-      {
-        title: "Event Analytics",
-        path: "/sponsorsDashboard/event-analytics",
-        icon: <MdWork />,
-      },
-      {
-        title: "Smart Fundraising",
-        path: "/sponsorsDashboard/smart-fundraising",
-        icon: <MdAnalytics />,
-      },
-      {
-        title: "Budget Planning Protocol",
-        path: "/sponsorsDashboard/budget-protocol",
-        icon: <MdPeople />,
-      },
-    ],
-  },
-  {
-    title: "User",
-    list: [
-      {
-        title: "Settings",
-        path: "/sponsorsDashboard/settings",
-        icon: <MdOutlineSettings />,
-      },
-      {
-        title: "Help",
-        path: "/sponsorsDashboard/help",
-        icon: <MdHelpCenter />,
       },
     ],
   },

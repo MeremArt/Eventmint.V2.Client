@@ -1,7 +1,7 @@
-import React from 'react'
+'use client';
+import { redirect } from 'next/navigation';
 
 export default function Page() {
-  return (
-    <div> sponsor page</div>
-  )
+  redirect('/dashboard/create-ticket/ticket-details');
+  return null;
 }
