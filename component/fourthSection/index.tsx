@@ -13,7 +13,7 @@ export default function FourthSection() {
   return (
     <section className="text-white relative h-full w-full pt-[40px] pb-[4rem] ">
         <Image
-          className="absolute mx-auto z-[0]"
+          className="absolute mx-auto z-[0] mxs:w-[200px] mxs:h-[200px]"
           src={HowItworks}
           alt="fourthImage"
           fill
