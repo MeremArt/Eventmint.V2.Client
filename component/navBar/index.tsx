@@ -13,7 +13,7 @@ type NavBarProps = {
 export default function NavBar(prop: NavBarProps) {
   const { openModal, openSmallNav } = prop;
   return (
-    <div className="max-w-[1440px] h-[64px] px-[64px] mxs:px-[16px] mmd:px-[32px] mx-auto relative z-10">
+    <div className="max-w-[1440px] h-[64px] px-[64px] mxs:px-[16px] mmd:px-[32px] mx-auto relative z-10 mxs:bg-black mxs:bg-opacity-[50%]">
       <div className="flex justify-between items-center">
         <div className="">
           <Image

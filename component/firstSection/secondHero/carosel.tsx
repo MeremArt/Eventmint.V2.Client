@@ -17,7 +17,7 @@ const Carousel = (itemprops:MainItemsProps) => {
     <div className='flex items-center justify-center overflow-hidden'>
         <Image className='absolute top-0 left-0 right-0 z-[0]' src={Lightening} alt='lightening' fill/>
       <Image
-        className='absolute left-0 transform -translate-y-1/2'
+        className='absolute left-0 transform -translate-y-1/2 mxs:w-[200px] mxs:h-[200px]'
         src={'/avatarBlur.png'}
         alt='firstAvatar'
         height={375}
@@ -25,7 +25,7 @@ const Carousel = (itemprops:MainItemsProps) => {
         style={{ top: '50%' }}
       />
       <Image
-        className='absolute transform -translate-x-1/2 -translate-y-1/2'
+        className='absolute transform -translate-x-1/2 -translate-y-1/2 mxs:w-[200px] mxs:h-[200px]'
         src={"/thirdAvatarImagedone.png"}
         alt='thirdAvatar'
         height={292.77}
@@ -33,7 +33,7 @@ const Carousel = (itemprops:MainItemsProps) => {
         style={{ top: '50%', left: '50%' }}
       />
       <Image
-        className='absolute right-0 transform -translate-y-1/2'
+        className='absolute right-0 transform -translate-y-1/2 mxs:w-[200px] mxs:h-[200px]'
         src={"/secondAvatarImage.png"}
         alt='secondAvatar'
         height={353.22}
@@ -63,45 +63,48 @@ const Carousel = (itemprops:MainItemsProps) => {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }}
-        // breakpoints={
-        //             {
-        //     1350:{
-        //         slidesPerView:5,
-        //         centeredSlides:true,
-        //         coverflowEffect: {
-        //             stretch: -20,
-        //         },
-        //         },
-        //     1200: {
-        //       slidesPerView:5,
-        //       spaceBetween:30,
-        //       centeredSlides:true,
-        //       coverflowEffect: {
-        //         stretch: -20,
-        //       },
-        //     },
+        breakpoints={
+                    {
+            1350:{
+                slidesPerView:5,
+                centeredSlides:true,
+                coverflowEffect: {
+                    stretch: -20,
+                },
+                },
+            1200: {
+              slidesPerView:5,
+              centeredSlides:true,
+              coverflowEffect: {
+                stretch: -20,
+              },
+            },
            
-        //     668: {
-        //       slidesPerView:3,
-        //       spaceBetween:30,
-        //       centeredSlides:true,
-        //       coverflowEffect: {
-        //         stretch: -20,
-        //       },
-        //     },
-            
-        //     0: {
-        //       slidesPerView: 5,
-        //       coverflowEffect: {
-        //         stretch: 0,
-        //       },
-        //     },
-        //   }}
+            668: {
+              slidesPerView:3,
+              centeredSlides:true,
+              coverflowEffect: {
+                stretch: -20,
+              },
+            },
+            0:{
+              slidesPerView:1,
+              centeredSlides:true,
+              coverflowEffect: {
+                stretch:-10,
+                modifier: 1, 
+                depth: 10, 
+              },
+              autoplay:{
+                delay:3000,
+              }
+            }
+          }}
         modules={[EffectCoverflow, Navigation, Autoplay]}
-        className="flex justify-center items-center"
+        className="flex justify-center items-center text-center "
       >
         {items.map((item, index) => (
-          <SwiperSlide key={index} className="w-full bg-center bg-cover min-w-[300px]">
+          <SwiperSlide key={index} className="w-full bg-center bg-cover lg:min-w-[300px] mxs:w-[100px] mxs:flex mxs:items-center mxs:justify-center">
             <div className="flex-shrink-0 w-full transition-transform duration-500 ease-in-out">
               <AvatarGirl
                 image={item.image}
