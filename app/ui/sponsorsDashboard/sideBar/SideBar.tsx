@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MenuLink from "../../dashboard/sideBar/menuLInk/menuLink";
+import MenuLink from "./menuLink/menuLink";
 import styles from "./sideBar.module.css";
 import { HiTicket } from "react-icons/hi2";
 import {
@@ -32,7 +32,7 @@ const menuItems: MenuCategory[] = [
     list: [
       {
         title: "Create Event Ad",
-        path: "/sponsorsDashboard/create-ticket",
+        path: "/sponsorsDashboard/createad",
         icon: <MdDashboard />,
       },
       {

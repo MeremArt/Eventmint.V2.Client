@@ -60,7 +60,7 @@ const Page: React.FC = () => {
             }`}
             onMouseEnter={() => handleMouseEnter("sponsor")}
             onMouseLeave={handleMouseLeave}
-            onClick={() => router.push("/sponsorsDashboard")}
+            onClick={() => router.push("/sponsorsDashboard/createad")}
             style={{
               transform: hovered === "sponsor" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",

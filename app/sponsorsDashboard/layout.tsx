@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import SideBar from '../ui/sponsorsDashboard/sideBar';
+import Sidebar from "../ui/sponsorsDashboard/sideBar/SideBar";
 import Navbar from "../ui/dashboard/navBar/Navbar";
 import styles from "./sponsorsDashboard.module.css";
 
@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
-        <SideBar />
+        <Sidebar />
       </div>
       <div className={styles.content}>
         <Navbar />

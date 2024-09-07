@@ -30,7 +30,7 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     if (status === "succeeded") {
-      router.push("/dashboard");
+      router.push("/selectoption");
     } else if (status === "failed") {
       // const timer = setTimeout((): void => {
       //   router.push("/");
