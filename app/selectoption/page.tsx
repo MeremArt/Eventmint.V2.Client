@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Typography } from "@/component/typogrphy";
 import Image from "next/image";
 import sponsorr from "@/component/svgs/NewImages/boy-dynamic-color.png";
@@ -11,7 +12,8 @@ import createColor from "@/component/svgs/NewImages/new-folder-color.png";
 import isEventColor from "@/component/svgs/NewImages/inevent-color.png";
 import TicketContain from "@/component/svgs/NewImages/Ticket-Container.png";
 
-const Page : React.FC = () => {
+const Page: React.FC = () => {
+  const router = useRouter();
   const [isPageRoute, setpageRoute] = useState({
     sponsor: false,
     createEvent: false,
@@ -20,21 +22,19 @@ const Page : React.FC = () => {
 
   const { sponsor, createEvent, inEvent } = isPageRoute;
 
-  const [clicked, setClicked] = useState("");
+  const [hovered, setHovered] = useState("");
 
-  const toSponsorPage = () => {
-    setpageRoute({ sponsor: true, createEvent: false, inEvent: false });
-    setClicked("sponsor");
+  const handleMouseEnter = (route: string) => {
+    setpageRoute({
+      sponsor: route === "sponsor",
+      createEvent: route === "createEvent",
+      inEvent: route === "inEvent",
+    });
+    setHovered(route);
   };
 
-  const toCreateEventPage = () => {
-    setpageRoute({ sponsor: false, createEvent: true, inEvent: false });
-    setClicked("createEvent");
-  };
-
-  const toInEventPage = () => {
-    setpageRoute({ sponsor: false, createEvent: false, inEvent: true });
-    setClicked("inEvent");
+  const handleMouseLeave = () => {
+    setHovered("");
   };
 
   return (
@@ -58,9 +58,11 @@ const Page : React.FC = () => {
                 ? "bg-[var(--Neutral-Neutral-700,#323A46)] rounded-xl shadow-[0px_0px_72px_0px_rgba(0,0,0,0.70)]"
                 : ""
             }`}
-            onClick={toSponsorPage}
+            onMouseEnter={() => handleMouseEnter("sponsor")}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => router.push("/sponsorsDashboard")}
             style={{
-              transform: clicked === "sponsor" ? "scale(1.1)" : "scale(1)",
+              transform: hovered === "sponsor" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",
             }}
           >
@@ -98,9 +100,11 @@ const Page : React.FC = () => {
                 ? "bg-[var(--Neutral-Neutral-700,#323A46)] rounded-xl shadow-[0px_0px_72px_0px_rgba(0,0,0,0.70)]"
                 : ""
             }`}
-            onClick={toCreateEventPage}
+            onMouseEnter={() => handleMouseEnter("createEvent")}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => router.push("/dashboard")}
             style={{
-              transform: clicked === "createEvent" ? "scale(1.1)" : "scale(1)",
+              transform: hovered === "createEvent" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",
             }}
           >
@@ -138,9 +142,11 @@ const Page : React.FC = () => {
                 ? "bg-[var(--Neutral-Neutral-700,#323A46)] rounded-xl shadow-[0px_0px_72px_0px_rgba(0,0,0,0.70)]"
                 : ""
             }`}
-            onClick={toInEventPage}
+            onMouseEnter={() => handleMouseEnter("inEvent")}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => router.push("/event")}
             style={{
-              transform: clicked === "inEvent" ? "scale(1.1)" : "scale(1)",
+              transform: hovered === "inEvent" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",
             }}
           >
@@ -174,7 +180,6 @@ const Page : React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Page;
-

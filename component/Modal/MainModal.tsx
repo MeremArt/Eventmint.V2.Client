@@ -23,23 +23,71 @@ export default function MainModal({ closeModal }: MainModalProps) {
   const router = useRouter();
 
   useEffect(() => {
-    if (connected && publicKey) {
-      toast.success("Welcome to Eventmint!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    const checkIfUserExists = async () => {
+      if (connected && publicKey) {
+        try {
+          const response = await axios.get(
+            `https://eventmint.onrender.com/api/v1/user/exists/${publicKey.toString()}`
+          );
 
-      setTimeout(() => {
-        router.push("/selectoption");
-      }, 3000);
-    } else {
-      console.log("Failed to connect wallet");
-    }
+          if (response.data.data) {
+            toast.success("Welcome back!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setTimeout(() => {
+              router.push(`/selectoption`);
+            }, 3000);
+          } else {
+            toast.error("No profile found. Please create one.", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setTimeout(() => {
+              router.push(`/createprofile`);
+            }, 3000);
+          }
+        } catch (error: any) {
+          if (error.response && error.response.status === 404) {
+            toast.error("No profile found. Redirecting to create profile...", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setTimeout(() => {
+              router.push(`/createprofile`);
+            }, 3000);
+          } else {
+            console.error("Error checking user existence:", error);
+            toast.error("An error occurred. Please try again.", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        }
+      }
+    };
+
+    checkIfUserExists();
   }, [connected, publicKey, router]);
 
   return (
