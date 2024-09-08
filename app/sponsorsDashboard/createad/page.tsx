@@ -1,7 +1,7 @@
-import React from "react";
+"use client";
+import { redirect } from "next/navigation";
 
-const page = () => {
-  return <div></div>;
-};
-
-export default page;
+export default function Page() {
+  redirect("/sponsorsDashboard/createad/ad-details");
+  return null;
+}

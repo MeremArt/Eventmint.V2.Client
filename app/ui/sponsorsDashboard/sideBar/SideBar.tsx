@@ -32,7 +32,7 @@ const menuItems: MenuCategory[] = [
     list: [
       {
         title: "Create Event Ad",
-        path: "/sponsorsDashboard/createad",
+        path: "/sponsorsDashboard/createad/ad-details",
         icon: <MdDashboard />,
       },
       {
