@@ -16,10 +16,9 @@ import Picture from "@/component/svgs/picture";
 import { Button } from "@/component/button";
 import ArrowRight from "@/component/svgs/arrowRight";
 import { useDispatch, useSelector } from "react-redux";
-import { ticketAction } from "@/mainStore/reduxSlices/ticketDetailSlice";
 import { useRouter } from "next/navigation";
 import { useWallet } from "@solana/wallet-adapter-react";
-
+import { sponsorTicketAction } from "@/mainStore/reduxSlices/sponsorticketdetails";
 export default function Page() {
   const dispatch = useDispatch();
   const ticketState = useSelector((state: any) => state.ticketDetail);
@@ -75,22 +74,22 @@ export default function Page() {
     const { id, value } = e.target;
     switch (id) {
       case "ticketName":
-        dispatch(ticketAction.updateTicketName(value));
+        dispatch(sponsorTicketAction.updateTicketName(value));
         break;
       case "ticketDescription":
-        dispatch(ticketAction.updateTicketDescription(value));
+        dispatch(sponsorTicketAction.updateTicketDescription(value));
         break;
       case "category":
-        dispatch(ticketAction.updateCategory(value));
+        dispatch(sponsorTicketAction.updateCategory(value));
         break;
       case "amount":
-        dispatch(ticketAction.updateAmount(value));
+        dispatch(sponsorTicketAction.updateAmount(value));
         break;
       case "quantity":
-        dispatch(ticketAction.updateQuantity(value));
+        dispatch(sponsorTicketAction.updateQuantity(value));
         break;
       case "location":
-        dispatch(ticketAction.updateLocation(value));
+        dispatch(sponsorTicketAction.updateLocation(value));
         break;
       default:
         break;
@@ -98,11 +97,11 @@ export default function Page() {
   };
 
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(ticketAction.updateDate(e.target.value));
+    dispatch(sponsorTicketAction.updateDate(e.target.value));
   };
 
   const handleSelectChange = (e: any) => {
-    dispatch(ticketAction.updateCategory(e.target.value));
+    dispatch(sponsorTicketAction.updateCategory(e.target.value));
   };
 
   const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -115,21 +114,20 @@ export default function Page() {
 
       reader.onload = (event) => {
         const dataURL = event?.target?.result as string;
-        dispatch(ticketAction.updateImage({ image: dataURL, imageName: name }));
+        dispatch(sponsorTicketAction.updateImage({ image: dataURL, imageName: name }));
       };
 
       reader.readAsDataURL(file);
     } else {
-      dispatch(ticketAction.updateImage({ image: "", imageName: "" }));
+      dispatch(sponsorTicketAction.updateImage({ image: "", imageName: "" }));
     }
   };
 
   const handleFormSubmit = (event: any) => {
     event.preventDefault();
     setIsLoading(true);
-    router.push("/dashboard/create-ticket/ticket-preview");
+    router.push("/sponsorsDashboard/createad/ad-preview");
     setIsLoading(false);
-    console.log(publicKey?.toString(), "ticket deatail");
   };
 
   return (

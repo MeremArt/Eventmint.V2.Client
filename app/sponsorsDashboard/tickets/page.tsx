@@ -8,7 +8,7 @@ import Pagination from "@mui/material/Pagination";
 import { useSelector } from "react-redux";
 
 export default function Page() {
-  const events = useSelector((state: any) => state.event.events);
+  const events = useSelector((state: any) => state.sponsorEvent.events);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(6);

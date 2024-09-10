@@ -37,12 +37,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <ul className={styles.navContext}>
           <li
             className={
-              isActive("/dashboard/create-ticket/ticket-details")
+              isActive("/sponsorsDashboard/createad/ad-details")
                 ? styles.list
                 : undefined
             }
           >
-            <Link href="/dashboard/create-ticket/ticket-details">
+            <Link href="/sponsorsDashboard/createad/ad-details">
               <Typography
                 variant="body-m"
                 customClassName={clsx("font-Ubuntu", {
@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     "/dashboard/create-ticket/ticket-details"
                   ),
                   "text-[#D0D5DD]": isActive(
-                    "/dashboard/create-ticket/ticket-details"
+                    "/sponsorsDashboard/createad/ad-details"
                   ),
                 })}
               >
@@ -60,20 +60,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </li>
           <li
             className={
-              isActive("/dashboard/create-ticket/ticket-preview")
+              isActive("/sponsorsDashboard/createad/ad-preview")
                 ? styles.list
                 : undefined
             }
           >
-            <Link href="/dashboard/create-ticket/ticket-preview">
+            <Link href="/sponsorsDashboard/createad/ad-preview">
               <Typography
                 variant="body-m"
                 customClassName={clsx("font-Ubuntu", {
                   "text-[#323A46]": !isActive(
-                    "/dashboard/create-ticket/ticket-preview"
+                    "/sponsorsDashboard/createad/ad-preview"
                   ),
                   "text-[#D0D5DD]": isActive(
-                    "/dashboard/create-ticket/ticket-preview"
+                    "/sponsorsDashboard/createad/ad-preview"
                   ), // Active style
                 })}
               >
