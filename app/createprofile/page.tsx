@@ -47,7 +47,7 @@ const Page: React.FC = () => {
 
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/user/upload`,
+        `https://procyon-labs-server.vercel.app/api/v1/user/upload`,
         formData,
         {
           headers: {

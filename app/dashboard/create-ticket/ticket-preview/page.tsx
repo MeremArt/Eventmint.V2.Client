@@ -24,7 +24,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.ticketDetail);
-  const [getUserid, setGetUserid]= useState<string | null>('')
+  const [getUserid, setGetUserid] = useState<string | null>("");
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -32,12 +32,10 @@ export default function Page() {
     API_KEY_SECRET: any;
     upload: any;
   }
-  useEffect(()=>{
-  const getUserId = localStorage.getItem('publicKey');
-    setGetUserid(getUserId)
-  },[])
-  
-  
+  useEffect(() => {
+    const getUserId = localStorage.getItem("publicKey");
+    setGetUserid(getUserId);
+  }, []);
 
   const {
     ticketName,
@@ -77,11 +75,10 @@ export default function Page() {
     }
 
     const _id = publicKey;
-      console.log(publicKey?.toString(), 'publickey')
-
+    console.log(publicKey?.toString(), "publickey");
 
     const formObject = {
-      userId:getUserid,
+      userId: getUserid,
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -95,10 +92,10 @@ export default function Page() {
       location: location,
       date: date,
     };
-     
+
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
+        `https://procyon-labs-server.vercel.app/api/v1/event/${formObject.userId}`,
         formObject,
         {
           headers: {

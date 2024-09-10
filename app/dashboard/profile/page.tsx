@@ -31,7 +31,7 @@ const Page = () => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `https://eventmint.onrender.com/api/v1/user/${publicKey.toString()}`
+            `https://procyon-labs-server.vercel.app/api/v1/user/${publicKey.toString()}`
           );
           const data = await response.json();
           if (data.success) {
@@ -46,7 +46,7 @@ const Page = () => {
             localStorage.setItem("profile", JSON.stringify(data.user));
             // Dispatch the user ID to Redux
             const userId = data.user._id;
-            localStorage.setItem('userId',JSON.stringify(userId))
+            localStorage.setItem("userId", JSON.stringify(userId));
             dispatch(setUserId(userId));
           } else {
             toast.error("failed to fetch user data");
