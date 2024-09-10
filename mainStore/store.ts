@@ -3,13 +3,17 @@ import { ticketSlice } from "./reduxSlices/ticketDetailSlice";
 import profileReducer from "../component/features/profile/profileslice";
 import userReducer from "../component/features/userslice/userSlice";
 import { eventSlice } from "@/component/features/eventstore/eventSlice";
+import { sponsorsTicketSlice } from "./reduxSlices/sponsorticketdetails";
 import { profile } from "console";
+import { sponsorEventSlice } from "./reduxSlices/sponsorAddEvent";
 
 export const store = configureStore({
   reducer: {
     ticketDetail: ticketSlice.reducer,
+    sponsorTicketDetail: sponsorsTicketSlice.reducer,
     profile: profileReducer,
     event: eventSlice.reducer,
+    sponsorEvent:sponsorEventSlice.reducer,
     user: userReducer,
   },
 });
