@@ -22,12 +22,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const isActive = (path: string) => pathname === path;
 
   const isTicketDetailsPage = () => {
-    return isActive("/dashboard/create-ticket/ticket-details");
+    return isActive("/sponsorsDashboard/createad/ad-details");
   };
 
-  const redirectToDetailPage = () => {
-    router.push("/dashboard/create-ticket/ticket-details");
-  };
+  // const redirectToDetailPage = () => {
+  //   router.push("/dashboard/create-ticket/ticket-details");
+  // };
 
   const GetTicketPage = isTicketDetailsPage();
 

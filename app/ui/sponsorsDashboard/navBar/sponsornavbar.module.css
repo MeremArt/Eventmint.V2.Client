@@ -76,6 +76,6 @@
   height: 48px;
   border-radius: 100px;
   flex-shrink: 0;
-  background: url("https://res.cloudinary.com/dtfvdjvyr/image/upload/v1723166289/female_3_pk5jwk.png")
-    lightgray 50% / cover no-repeat;
+  /* background: url("https://res.cloudinary.com/dtfvdjvyr/image/upload/v1723166289/female_3_pk5jwk.png")
+    lightgray 50% / cover no-repeat; */
 }

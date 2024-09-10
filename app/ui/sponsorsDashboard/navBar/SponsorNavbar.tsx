@@ -1,6 +1,8 @@
 "use client";
 import { usePathname } from "next/navigation";
 import styles from "./sponsornavbar.module.css";
+import { useEffect,useState } from "react";
+import Image from "next/image";
 import {
   MdNotifications,
   MdOutlineChat,
@@ -11,6 +13,15 @@ import styled from "styled-components";
 
 const SponsorNavbar = () => {
   const pathname = usePathname();
+
+
+  const [profile, setProfile] = useState<string | any>('')
+  useEffect(()=>{
+    const storedProfile = localStorage.getItem("profile");
+    if (storedProfile) {
+      setProfile(JSON.parse(storedProfile));
+    }
+    },[])
 
   const StyledIcon = styled(MdSearch)`
     color: red;
@@ -75,7 +86,15 @@ const SponsorNavbar = () => {
             </svg>
           </div>
           <div className={styles.profile}>
-            <div className={styles.picture}></div>
+          <div className={styles.picture}>
+              <Image
+              className="rounded-full"
+              src={
+              profile?.image
+                ? profile?.image
+                : `https://res.cloudinary.com/dtfvdjvyr/image/upload/v1724090383/Profile_Picture_dykec6.png`
+            } alt="" height={48} width={48} />
+            </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
