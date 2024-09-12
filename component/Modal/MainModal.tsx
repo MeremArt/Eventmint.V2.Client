@@ -26,8 +26,8 @@ export default function MainModal({ closeModal }: MainModalProps) {
     const checkIfUserExists = async () => {
       if (connected && publicKey) {
         try {
-          const response = await axios.get(
-            `https://procyon-labs-server.vercel.app/api/v1/user/exists/${publicKey.toString()}`
+          const response = await axios.post(
+            `https://eventmint.onrender.com/api/v1/user/exists/${publicKey.toString()}`
           );
 
           if (response.data.data) {
