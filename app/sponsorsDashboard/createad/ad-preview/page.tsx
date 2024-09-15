@@ -23,7 +23,7 @@ export default function Page() {
   const [loading, setLoading] = useState<Boolean | undefined>(false);
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.sponsorTicketDetail);
-  const [getUserid, setGetUserid]= useState<string | null>('')
+  const [getUserid, setGetUserid] = useState<string | null>("");
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -31,12 +31,10 @@ export default function Page() {
     API_KEY_SECRET: any;
     upload: any;
   }
-  useEffect(()=>{
-  const getUserId = localStorage.getItem('publicKey');
-    setGetUserid(getUserId)
-  },[])
-  
-  
+  useEffect(() => {
+    const getUserId = localStorage.getItem("publicKey");
+    setGetUserid(getUserId);
+  }, []);
 
   const {
     ticketName,
@@ -76,11 +74,10 @@ export default function Page() {
     }
 
     const _id = publicKey;
-      console.log(publicKey?.toString(), 'publickey')
-
+    console.log(publicKey?.toString(), "publickey");
 
     const formObject = {
-      userId:getUserid,
+      userId: getUserid,
       name: ticketName,
       image: image,
       description: ticketDescription,
@@ -94,7 +91,7 @@ export default function Page() {
       location: location,
       date: date,
     };
-     
+
     try {
       const response = await axios.post(
         `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
@@ -130,7 +127,7 @@ export default function Page() {
         <div className="w-1/2 flex flex-col items-start gap-[24px] py-[16px] flex-[1_0_0%] rounded-[16px] bg-[#191D23]">
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Ticket Name
+              Ad Name
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
               {ticketName}
@@ -138,7 +135,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Ticket Description
+              Ad Description
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
               {ticketDescription}

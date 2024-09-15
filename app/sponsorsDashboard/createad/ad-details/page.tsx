@@ -114,7 +114,9 @@ export default function Page() {
 
       reader.onload = (event) => {
         const dataURL = event?.target?.result as string;
-        dispatch(sponsorTicketAction.updateImage({ image: dataURL, imageName: name }));
+        dispatch(
+          sponsorTicketAction.updateImage({ image: dataURL, imageName: name })
+        );
       };
 
       reader.readAsDataURL(file);
@@ -138,7 +140,7 @@ export default function Page() {
             <Box>
               <TextField
                 id="ticketName"
-                label="Ticket Name"
+                label="Key Messages"
                 variant="outlined"
                 fullWidth
                 value={ticketName}
@@ -172,7 +174,7 @@ export default function Page() {
             <Box>
               <TextField
                 id="ticketDescription"
-                label="Ticket Description"
+                label="Ad Campaign Goals"
                 multiline
                 rows={4}
                 fullWidth
@@ -206,11 +208,11 @@ export default function Page() {
             </Box>
             <Box>
               <FormControl fullWidth>
-                <CustomInputLabel id="Select Category">
-                  Select Category
+                <CustomInputLabel id="Select Gender">
+                  Select Gender
                 </CustomInputLabel>
                 <Select
-                  labelId="Select Category"
+                  labelId="Select Gender"
                   id="category"
                   value={category}
                   input={<CustomOutlinedInput />}
@@ -218,19 +220,16 @@ export default function Page() {
                   MenuProps={CustomMenuProps}
                 >
                   <MenuItem value={"Parties & Socials"}>
-                    <p className="text-[#E0FFE0]"> 🎉 Parties & Socials</p>
+                    <p className="text-[#E0FFE0]"> 👨 Male</p>
                   </MenuItem>
                   <MenuItem value={" Food & Drink"}>
-                    <p className="text-[#E0FFE0]"> 🍴 Food & Drink</p>
+                    <p className="text-[#E0FFE0]">👩 Female</p>
                   </MenuItem>
                   <MenuItem value={"Charity & Causes"}>
-                    <p className="text-[#E0FFE0]"> 🌟 Charity & Causes</p>
+                    <p className="text-[#E0FFE0]">🌐 Non-binary</p>
                   </MenuItem>
                   <MenuItem value={"Tech & Innovation"}>
-                    <p className="text-[#E0FFE0]"> 💻 Tech & Innovation</p>
-                  </MenuItem>
-                  <MenuItem value={"Education & Workshops"}>
-                    <p className="text-[#E0FFE0]"> 🎓 Education & Workshops</p>
+                    <p className="text-[#E0FFE0]">👥 All Genders</p>
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -238,7 +237,7 @@ export default function Page() {
             <Box>
               <TextField
                 id="amount"
-                label="Enter Amount (SOL)"
+                label="Budget and Ad Spend(SOL)"
                 variant="outlined"
                 fullWidth
                 value={amount}
@@ -271,8 +270,8 @@ export default function Page() {
             </Box>
             <Box>
               <TextField
-                id="quantity"
-                label="Quantity"
+                id="Industry/Niche"
+                label="Industry/Niche"
                 variant="outlined"
                 fullWidth
                 value={quantity}
