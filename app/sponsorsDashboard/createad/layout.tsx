@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   ),
                 })}
               >
-                Ticket Details
+                Ad Details
               </Typography>
             </Link>
           </li>
@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   ), // Active style
                 })}
               >
-                Ticket Preview
+                Ad Preview
               </Typography>
             </Link>
           </li>

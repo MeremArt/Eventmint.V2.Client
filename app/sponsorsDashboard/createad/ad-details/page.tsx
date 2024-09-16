@@ -27,7 +27,7 @@ export default function Page() {
   const { publicKey } = useWallet();
 
   const {
-    ticketName,
+    KeyMessage,
     ticketDescription,
     category,
     amount,
@@ -73,7 +73,7 @@ export default function Page() {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     switch (id) {
-      case "ticketName":
+      case "KeyMessage":
         dispatch(sponsorTicketAction.updateTicketName(value));
         break;
       case "ticketDescription":
@@ -139,11 +139,11 @@ export default function Page() {
           <div className="w-1/2 flex flex-col gap-y-[32px]">
             <Box>
               <TextField
-                id="ticketName"
-                label="Key Messages"
+                id="KeyMessage"
+                label="Key Message"
                 variant="outlined"
                 fullWidth
-                value={ticketName}
+                value={KeyMessage}
                 onChange={handleInputChange}
                 required
                 sx={{
@@ -274,7 +274,7 @@ export default function Page() {
                 label="Industry/Niche"
                 variant="outlined"
                 fullWidth
-                value={quantity}
+                value={location}
                 onChange={handleInputChange}
                 required
                 sx={{

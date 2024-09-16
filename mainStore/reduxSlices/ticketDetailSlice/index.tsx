@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialTicketDetailState = {
-  ticketName: "",
+  KeyMessage: "",
   ticketDescription: "",
-  category: "", 
+  category: "",
   amount: 0,
-  quantity: 0, 
+  quantity: 0,
   image: "",
   imageName: "",
-  location: '',
-  date:''
+  location: "",
+  date: "",
 };
 
 export const ticketSlice = createSlice({
