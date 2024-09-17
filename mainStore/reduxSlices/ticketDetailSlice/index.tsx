@@ -17,7 +17,7 @@ export const ticketSlice = createSlice({
   initialState: initialTicketDetailState,
   reducers: {
     updateTicketName: (state, { payload }) => {
-      state.ticketName = payload;
+      state.KeyMessage = payload;
     },
     updateTicketDescription: (state, { payload }) => {
       state.ticketDescription = payload;
