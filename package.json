@@ -22,6 +22,8 @@
     "@solana/wallet-adapter-react-ui": "^0.9.35",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.95.2",
+    "@tiplink/wallet-adapter": "^2.1.21",
+    "@tiplink/wallet-adapter-react-ui": "^1.0.0",
     "apexcharts": "^3.52.0",
     "axios": "^1.7.4",
     "base64-img": "^1.0.4",
