@@ -6,7 +6,7 @@ import { eventSlice } from "@/component/features/eventstore/eventSlice";
 import { sponsorsTicketSlice } from "./reduxSlices/sponsorticketdetails";
 import { profile } from "console";
 import { sponsorEventSlice } from "./reduxSlices/sponsorAddEvent";
-
+import showModalReducer from './reduxSlices/modalSlice'
 export const store = configureStore({
   reducer: {
     ticketDetail: ticketSlice.reducer,
@@ -15,6 +15,7 @@ export const store = configureStore({
     event: eventSlice.reducer,
     sponsorEvent:sponsorEventSlice.reducer,
     user: userReducer,
+    modal: showModalReducer
   },
 });
 
