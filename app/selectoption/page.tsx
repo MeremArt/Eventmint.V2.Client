@@ -144,7 +144,7 @@ const Page: React.FC = () => {
             }`}
             onMouseEnter={() => handleMouseEnter("inEvent")}
             onMouseLeave={handleMouseLeave}
-            onClick={() => router.push("/event")}
+            onClick={() => router.push("/regular-user")}
             style={{
               transform: hovered === "inEvent" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",
