@@ -3,7 +3,8 @@ import React from 'react'
 import { ticketDummy } from '@/component/ticketResult/ticketDataResult';
 import TicketResult from '@/component/ticketResult';
 import RegularTicket from '@/component/regular-ticket';
-import BuyTicketModal from '@/component/regular-ticket/buy-ticket-modal';
+
+import RegularModal from '@/component/regular-ticket/regular-modal';
 import { useDispatch } from 'react-redux';
 import { updateShowModal } from '@/mainStore/reduxSlices/modalSlice';
 const Page: React.FC = () =>  {
@@ -25,7 +26,7 @@ const Page: React.FC = () =>  {
             price={item.Amount}
             date={item.date}
             blink={item.blink}
-            modal={<BuyTicketModal onClick={showModal} />}
+            modal={<RegularModal onClick={showModal} />}
           />
         ))}
       </div>
