@@ -47,7 +47,7 @@ export default function FirstHero({ openModal }: FirstHeroProps) {
             variant="h1"
             color="fontBodyWhiteishColor"
           >
-            Empowering Sponsor Reach and Engagement at Every
+            Better Customer Acquisition for Event
           </Typography>{" "}
           <Typography
             customClassName="text-gradient font-Ubuntu text-center mxs:text-h-r mxs:font-bold"
