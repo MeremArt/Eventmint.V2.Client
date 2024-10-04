@@ -4,7 +4,8 @@ import RegularTicket from "@/component/regular-ticket";
 import React, { useEffect, useState } from "react";
 import { ticketDummy } from "@/component/ticketResult/ticketDataResult";
 import axios from "axios";
-import RegularModal from "@/component/regular-ticket/regular-modal";
+
+import BuyTicketModal from '@/component/regular-ticket/buy-ticket-modal';
 import { useDispatch } from "react-redux";
 import { updateShowModal } from "@/mainStore/reduxSlices/modalSlice";
 import { toast } from "react-toastify";
@@ -56,7 +57,8 @@ const Page: React.FC = () => {
               price={item.price}
               date={item.date}
               blink={item.blink}
-              modal={<RegularModal onClick={showModal} />}
+              modal={<BuyTicketModal onClick={showModal} />}
+             
             />
           ))}
         </div>

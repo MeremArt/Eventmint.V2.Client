@@ -31,7 +31,7 @@ export default function Page() {
   };
 
   return (
-    <div className="h-screen border rounded-[24px] bg-[rgba(25,29,35,0.5)] flex flex-col items-start gap-8 flex-[1_0_0%]">
+    <div className="border rounded-[24px] bg-[rgba(25,29,35,0.5)] flex flex-col items-start gap-8 flex-[1_0_0%]">
       <div className="px-[32px] w-full border-b border-[#4B5768]">
         <SearchTickets />
       </div>
