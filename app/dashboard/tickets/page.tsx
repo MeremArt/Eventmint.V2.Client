@@ -47,7 +47,7 @@ export default function Page() {
             quantity={item.quantity}
             price={item.price}
             date={item.date}
-            link={item.blink}
+            blink={item.blink}
           />
         ))}
       </div>

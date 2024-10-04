@@ -18,8 +18,7 @@ import ArrowRight from "@/component/svgs/arrowRight";
 import { useDispatch, useSelector } from "react-redux";
 import { ticketAction } from "@/mainStore/reduxSlices/ticketDetailSlice";
 import { useRouter } from "next/navigation";
- import { useWallet } from "@solana/wallet-adapter-react";
-
+import { useWallet } from "@solana/wallet-adapter-react";
 
 export default function Page() {
   const dispatch = useDispatch();
@@ -27,9 +26,9 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const { publicKey } = useWallet();
-  
+
   const {
-    ticketName,
+    KeyMessage,
     ticketDescription,
     category,
     amount,
@@ -106,20 +105,46 @@ export default function Page() {
     dispatch(ticketAction.updateCategory(e.target.value));
   };
 
-  const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+   const getImageDataUrl = async (file: any) => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        "https://procyon-labs-server.onrender.com/api/v1/event/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const results = await response.json();
+      console.log(results, "this is the results i am looking for");
+      if (results.success) {
+        const { imageUrl } = results;
+        dispatch(ticketAction.updateImageUrl({ imageUrl }));
+        console.log(results, "get this shit");
+      }
+    } catch (error) {
+      console.log("Error uploading image:", error);
+    }
+  };
+
+  const handleCoverImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
     const files = e.target.files;
 
     if (files && files[0]) {
       const file = files[0];
       const { name } = file;
-
       reader.onload = (event) => {
         const dataURL = event?.target?.result as string;
         dispatch(ticketAction.updateImage({ image: dataURL, imageName: name }));
       };
-
       reader.readAsDataURL(file);
+      
+      await getImageDataUrl(file);
     } else {
       dispatch(ticketAction.updateImage({ image: "", imageName: "" }));
     }
@@ -130,7 +155,7 @@ export default function Page() {
     setIsLoading(true);
     router.push("/dashboard/create-ticket/ticket-preview");
     setIsLoading(false);
-    console.log(publicKey?.toString(),'ticket deatail')
+    console.log(publicKey?.toString(), "ticket deatail");
   };
 
   return (
@@ -144,7 +169,7 @@ export default function Page() {
                 label="Ticket Name"
                 variant="outlined"
                 fullWidth
-                value={ticketName}
+                value={KeyMessage}
                 onChange={handleInputChange}
                 required
                 sx={{

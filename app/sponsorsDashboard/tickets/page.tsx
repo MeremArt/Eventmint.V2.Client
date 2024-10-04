@@ -1,12 +1,11 @@
 "use client";
 import Input from "@/component/Input/Input";
 import SearchTickets from "@/component/searchTickets";
-import TicketResult from "@/component/ticketResult";
 import React, { useState } from "react";
 import { ticketDummy } from "@/component/ticketResult/ticketDataResult";
 import Pagination from "@mui/material/Pagination";
 import { useSelector } from "react-redux";
-
+import SponsorResult from "@/component/ticketResult/sponsorResult";
 export default function Page() {
   const events = useSelector((state: any) => state.sponsorEvent.events);
 
@@ -32,22 +31,22 @@ export default function Page() {
   };
 
   return (
-    <div className="border rounded-[24px] bg-[rgba(25,29,35,0.5)] flex flex-col items-start gap-8 flex-[1_0_0%]">
+    <div className="h-screen border rounded-[24px] bg-[rgba(25,29,35,0.5)] flex flex-col items-start gap-8 flex-[1_0_0%]">
       <div className="px-[32px] w-full border-b border-[#4B5768]">
         <SearchTickets />
       </div>
       <div className="flex px-8 items-center content-center gap-6 self-stretch flex-wrap">
         {ticketSli.map((item: any, index: any) => (
-          <TicketResult
+          <SponsorResult
             key={index}
             image={item.image}
-            name={item.name}
-            category={item.category}
+            name={item.keymessage}
+            campaign={item.campaign}
             location={item.location}
-            quantity={item.quantity}
-            price={item.price}
+            gender={item.gender}
+            price={item.budget}
             date={item.date}
-            link={item.blink}
+            blink={item.blink}
           />
         ))}
       </div>

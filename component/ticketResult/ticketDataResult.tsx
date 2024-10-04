@@ -1,12 +1,24 @@
 export interface ticketDummyProps {
-        image:string;
-        name:string;
-        category:string;
-        location:string;
-        quantity:number;
-        price: number;
-        date:string;
-        link:string;
+        image?:string;
+        name?:string;
+        category?:string;
+        location?:string;
+        quantity?:number;
+        price?: number;
+        date?:string;
+        blink?:string;
+        modal? : React.ReactNode
+}
+export interface sponsorDummyProps {
+    image?:string;
+    name?:string;
+    gender?:string;
+    campaign?:string;
+    location?:string;
+    price?: number;
+    date?:string;
+    blink?:string;
+    modal? : React.ReactNode
 }
 export interface mainTicketDummyProps {
     leads : ticketDummyProps []

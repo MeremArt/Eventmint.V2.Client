@@ -6,9 +6,9 @@ import { Button } from "../button";
 import CopyIcon from "../svgs/copyIcon";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { mainTicketDummyProps, ticketDummyProps } from "./ticketDataResult";
+import { mainTicketDummyProps, ticketDummyProps, sponsorDummyProps } from "./ticketDataResult";
 
-export default function TicketResult(prop: ticketDummyProps) {
+export default function SponsorResult(prop: sponsorDummyProps) {
   function formatDate(dateString: string) {
     const date = new Date(dateString);
 
@@ -18,27 +18,25 @@ export default function TicketResult(prop: ticketDummyProps) {
 
     return `${year}-${month}-${day}`;
   }
-  const { image, name, category, location, quantity, price, date, blink } =
-    prop;
-
-    const copyToClipboard = () => {
-      if (blink) {
-        navigator.clipboard.writeText(blink).then(() => {
-          toast("Copied");
-        }).catch(() => {
-          toast("Failed to copy");
-        });
-      } else {
-        toast("No link available to copy");
-      }
-    };
-    
+  const { image, name, location,campaign,gender, price, date, blink } = prop;
+  const copyToClipboard = () => {
+    if (blink) {
+      navigator.clipboard.writeText(blink).then(() => {
+        toast("Copied");
+      }).catch(() => {
+        toast("Failed to copy");
+      });
+    } else {
+      toast("No link available to copy");
+    }
+  };
+  
 
   const shortenedUrl = `${blink?.slice(0, 20)}...`;
   return (
     <div className="text-white flex w-fit flex-col items-start gap-2 border border-[#323A46] rounded-[24px] bg-[#0D0F11]">
       <div className=" relative flex h-[168px] justify-end items-end gap-1 self-stretch">
-        {image && (
+      {image && (
           <Image
             className="absolute inset-0 w-full h-full object-cover rounded-t-[24px]"
             src={image}
@@ -57,7 +55,7 @@ export default function TicketResult(prop: ticketDummyProps) {
             font="open-sans"
             customClassName="text-[#D0FFD1]"
           >
-            Ticket Name
+            key message
           </Typography>
           <Typography customClassName="text-body-xxsx" font="open-sans">
             {name}
@@ -69,10 +67,10 @@ export default function TicketResult(prop: ticketDummyProps) {
             font="open-sans"
             customClassName="text-[#D0FFD1]"
           >
-            Category
+            campaign
           </Typography>
           <Typography customClassName="text-body-xxsx" font="open-sans">
-            {category}
+            {campaign}
           </Typography>
         </div>
         <div className=" flex flex-col items-start gap-2 self-stretch">
@@ -94,10 +92,10 @@ export default function TicketResult(prop: ticketDummyProps) {
               font="open-sans"
               customClassName="text-[#D0FFD1]"
             >
-              Quantity
+              Gender
             </Typography>
             <Typography customClassName="text-body-xxsx" font="open-sans">
-              {quantity}
+              {gender}
             </Typography>
           </div>
           <div className="flex flex-col items-start gap-2 flex-[1_0_0%]">
@@ -106,7 +104,7 @@ export default function TicketResult(prop: ticketDummyProps) {
               font="open-sans"
               customClassName="text-[#D0FFD1]"
             >
-              Amount
+              Budget
             </Typography>
             <Typography customClassName="text-body-xxsx" font="open-sans">
               {price} SOL

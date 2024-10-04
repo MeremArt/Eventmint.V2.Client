@@ -10,7 +10,7 @@ const sponsorEventSlice = createSlice({
   reducers: {
     addEvent: (state, action) => {
       state.events.push({
-        ...action.payload.event,
+        ...action.payload.sponsor,
         blink: action.payload.blink,
       });
     },

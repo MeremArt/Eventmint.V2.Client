@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const initialTicketDetailState = {
-  ticketName: "",
+  KeyMessage: "",
   ticketDescription: "",
   category: "", 
   amount: 0,
   quantity: 0, 
   image: "",
+  imageUrl:"",
   imageName: "",
   location: '',
-  date:''
+  date:'',
+  industry:""
 };
 
 export const sponsorsTicketSlice = createSlice({
@@ -17,7 +19,8 @@ export const sponsorsTicketSlice = createSlice({
   initialState: initialTicketDetailState,
   reducers: {
     updateTicketName: (state, { payload }) => {
-      state.ticketName = payload;
+      state.
+      KeyMessage = payload;
     },
     updateTicketDescription: (state, { payload }) => {
       state.ticketDescription = payload;
@@ -25,11 +28,17 @@ export const sponsorsTicketSlice = createSlice({
     updateCategory: (state, { payload }) => {
       state.category = payload;
     },
+    updateIndustry: (state, { payload }) => {
+      state.industry = payload;
+    },
     updateAmount: (state, { payload }) => {
       state.amount = payload;
     },
     updateQuantity: (state, { payload }) => {
       state.quantity = payload;
+    },
+    updateImageUrl: (state, { payload }) => {
+      state.imageUrl = payload;
     },
     updateImage: (state, { payload }) => {
       state.image = payload.image;

@@ -1,9 +1,16 @@
+'use client'
 import React from 'react'
 import { ticketDummy } from '@/component/ticketResult/ticketDataResult';
 import TicketResult from '@/component/ticketResult';
 import RegularTicket from '@/component/regular-ticket';
+import BuyTicketModal from '@/component/regular-ticket/buy-ticket-modal';
+import { useDispatch } from 'react-redux';
+import { updateShowModal } from '@/mainStore/reduxSlices/modalSlice';
 const Page: React.FC = () =>  {
-
+  const dispatch = useDispatch()
+  const showModal = ()=> {
+    dispatch(updateShowModal())
+}
   return (
     <div className='w-full h-full text-white'>
      <div className="flex items-center content-center gap-6 self-stretch flex-wrap">
@@ -17,7 +24,8 @@ const Page: React.FC = () =>  {
             quantity={item.quantity}
             price={item.Amount}
             date={item.date}
-            link={item.blink}
+            blink={item.blink}
+            modal={<BuyTicketModal onClick={showModal} />}
           />
         ))}
       </div>
