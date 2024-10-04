@@ -8,6 +8,7 @@ export const initialTicketDetailState = {
   quantity: 0,
   image: "",
   imageName: "",
+  imageUrl:"",
   location: "",
   date: "",
 };
@@ -25,6 +26,9 @@ export const ticketSlice = createSlice({
     updateCategory: (state, { payload }) => {
       state.category = payload;
     },
+    updateImageUrl: (state, { payload }) => {
+      state.imageUrl= payload.imageUrl; 
+    },
     updateAmount: (state, { payload }) => {
       state.amount = payload;
     },
@@ -34,6 +38,7 @@ export const ticketSlice = createSlice({
     updateImage: (state, { payload }) => {
       state.image = payload.image;
       state.imageName = payload.imageName;
+
     },
     updateLocation: (state, { payload }) => {
       state.location = payload;

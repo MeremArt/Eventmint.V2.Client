@@ -38,12 +38,13 @@ export default function Page() {
   }, []);
 
   const {
-    ticketName,
+    KeyMessage,
     ticketDescription,
     category,
     amount,
     quantity,
     image,
+    imageUrl,
     imageName,
     location,
     date,
@@ -51,7 +52,7 @@ export default function Page() {
 
   const checkstate = () => {
     return (
-      ticketName &&
+      KeyMessage &&
       ticketDescription &&
       category &&
       amount > 0 &&
@@ -79,8 +80,8 @@ export default function Page() {
 
     const formObject = {
       userId: getUserid,
-      name: ticketName,
-      image: image,
+      name: KeyMessage,
+      image: imageUrl,
       description: ticketDescription,
       quantity: quantity,
       category: category,
@@ -132,7 +133,7 @@ export default function Page() {
               Ticket Name
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
-              {ticketName}
+              {KeyMessage}
             </Typography>
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">

@@ -21,7 +21,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { sponsorTicketAction } from "@/mainStore/reduxSlices/sponsorticketdetails";
 export default function Page() {
   const dispatch = useDispatch();
-  const ticketState = useSelector((state: any) => state.ticketDetail);
+  const ticketState = useSelector((state: any) => state.sponsorTicketDetail);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const { publicKey } = useWallet();
@@ -31,12 +31,15 @@ export default function Page() {
     ticketDescription,
     category,
     amount,
-    quantity,
     image,
+    imageUrl,
     location,
     date,
+    industry
   } = ticketState;
 
+  console.log(imageUrl);
+  
   const CustomOutlinedInput = styled(OutlinedInput)(() => ({
     "& .MuiOutlinedInput-notchedOutline": {
       borderRadius: 16,
@@ -70,6 +73,32 @@ export default function Page() {
     },
   }));
 
+  const getImageDataUrl = async (file: any) => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        "https://procyon-labs-server.onrender.com/api/v1/event/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const results = await response.json();
+      console.log(results, "this is the results i am looking for");
+      if (results.success) {
+        const { imageUrl } = results;
+        dispatch(sponsorTicketAction.updateImageUrl(imageUrl));
+        console.log(results, "get this shit");
+      }
+    } catch (error) {
+      console.log("Error uploading image:", error);
+    }
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     switch (id) {
@@ -79,14 +108,11 @@ export default function Page() {
       case "ticketDescription":
         dispatch(sponsorTicketAction.updateTicketDescription(value));
         break;
-      case "category":
-        dispatch(sponsorTicketAction.updateCategory(value));
-        break;
       case "amount":
         dispatch(sponsorTicketAction.updateAmount(value));
         break;
-      case "quantity":
-        dispatch(sponsorTicketAction.updateQuantity(value));
+        case "Industry/Niche":
+        dispatch(sponsorTicketAction.updateIndustry(value));
         break;
       case "location":
         dispatch(sponsorTicketAction.updateLocation(value));
@@ -104,7 +130,7 @@ export default function Page() {
     dispatch(sponsorTicketAction.updateCategory(e.target.value));
   };
 
-  const handleCoverImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleCoverImageChange = async(e: ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
     const files = e.target.files;
 
@@ -120,6 +146,7 @@ export default function Page() {
       };
 
       reader.readAsDataURL(file);
+      await getImageDataUrl(file)
     } else {
       dispatch(sponsorTicketAction.updateImage({ image: "", imageName: "" }));
     }
@@ -219,16 +246,16 @@ export default function Page() {
                   onChange={handleSelectChange}
                   MenuProps={CustomMenuProps}
                 >
-                  <MenuItem value={"Parties & Socials"}>
+                  <MenuItem value={"Male"}>
                     <p className="text-[#E0FFE0]"> 👨 Male</p>
                   </MenuItem>
-                  <MenuItem value={" Food & Drink"}>
+                  <MenuItem value={" Female"}>
                     <p className="text-[#E0FFE0]">👩 Female</p>
                   </MenuItem>
-                  <MenuItem value={"Charity & Causes"}>
+                  <MenuItem value={"Non-binary"}>
                     <p className="text-[#E0FFE0]">🌐 Non-binary</p>
                   </MenuItem>
-                  <MenuItem value={"Tech & Innovation"}>
+                  <MenuItem value={"All Genders"}>
                     <p className="text-[#E0FFE0]">👥 All Genders</p>
                   </MenuItem>
                 </Select>
@@ -274,7 +301,7 @@ export default function Page() {
                 label="Industry/Niche"
                 variant="outlined"
                 fullWidth
-                value={location}
+                value={industry}
                 onChange={handleInputChange}
                 required
                 sx={{

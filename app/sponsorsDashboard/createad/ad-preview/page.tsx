@@ -37,24 +37,25 @@ export default function Page() {
   }, []);
 
   const {
-    ticketName,
+  
     ticketDescription,
     category,
     amount,
-    quantity,
     image,
+    imageUrl,
     imageName,
     location,
+    industry,
     date,
+    KeyMessage
   } = ticketState;
 
   const checkstate = () => {
     return (
-      ticketName &&
+      KeyMessage &&
       ticketDescription &&
       category &&
       amount > 0 &&
-      quantity > 0 &&
       image &&
       imageName &&
       location &&
@@ -73,28 +74,23 @@ export default function Page() {
       return;
     }
 
-    const _id = publicKey;
+    const _id = publicKey?.toString()
     console.log(publicKey?.toString(), "publickey");
 
     const formObject = {
-      userId: getUserid,
-      name: ticketName,
-      image: image,
-      description: ticketDescription,
-      quantity: quantity,
-      category: category,
-      price: amount,
-      productFile: "https://example.com/file.pdf",
-      unlimited: false,
-      payAnyPrice: false,
-      type: "Conference",
+      keymessage: KeyMessage,
+      image: imageUrl,
+      industry:industry,
+      campaign:ticketDescription,
+      gender: category,
+      budget: amount,
       location: location,
       date: date,
     };
 
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/event/${formObject.userId}`,
+        `https://procyon-labs-server.onrender.com/api/v1/sponsor/${getUserid}`,
         formObject,
         {
           headers: {
@@ -102,13 +98,21 @@ export default function Page() {
           },
         }
       );
-
-      const { event, blink } = response.data;
-      dispatch(addEvent({ event, blink }));
+        console.log(response, 'let me see resres')
+      const { sponsor, blink, message } = response.data;
+      dispatch(addEvent({ sponsor, blink }));
       dispatch(sponsorTicketAction.resetTicketDetails());
       router.push("/sponsorsDashboard/tickets");
       setLoading(false);
-      toast.success("Event Created!");
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (err: any) {
       const errorMessage = err?.message;
       console.log(err, "LETS SEE");
@@ -127,15 +131,15 @@ export default function Page() {
         <div className="w-1/2 flex flex-col items-start gap-[24px] py-[16px] flex-[1_0_0%] rounded-[16px] bg-[#191D23]">
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Ad Name
+            KeyMessage
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
-              {ticketName}
+              {KeyMessage}
             </Typography>
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Ad Description
+              Ad Campaign
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
               {ticketDescription}
@@ -143,15 +147,15 @@ export default function Page() {
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Category
+              Industry
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
-              {category}
+              {industry}
             </Typography>
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Amount
+              Budget
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
               {amount} SOL
@@ -159,10 +163,10 @@ export default function Page() {
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
             <Typography customClassName="text-body-xxsx font-open-sans text-[#64748B]">
-              Quantity
+              Gender
             </Typography>
             <Typography customClassName="text-body-s font-open-sans text-[#E7EAEE]">
-              {quantity}
+              {category}
             </Typography>
           </div>
           <div className="flex flex-col items-start gap-[16px] self-stretch px-[16px] pb-[16px] border-b border-[#323A46]">
