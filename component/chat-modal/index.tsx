@@ -110,8 +110,6 @@ function ChatRoom() {
               label="join event"
               customClassName="text-body-xxs font-open-sans bg-gradient-to-b-custom rounded-[12px] text-[#003500]"
               size="moreMedium"
-
-              //   onClick={openModal}
             />
           </Link>
         </form>

@@ -22,7 +22,6 @@ export default function BuyTicketModal({ onClick }: buttonprops) {
       <Button
         label={"close"}
         customClassName="flex h-12 px-8 py-2 justify-center items-center gap-2 rounded-xl border-r-2 border-b-4 border-l-2 border-[#C21417] bg-gradient-to-b from-[#FF6F72] to-[#FC1723]"
-        onClick={onClick}
       />
     </div>
   );

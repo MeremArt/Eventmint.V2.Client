@@ -30,6 +30,8 @@ export default function MainModal({ closeModal }: MainModalProps) {
             `https://procyon-labs-server.vercel.app/api/v1/user/exists/${publicKey.toString()}`
           );
 
+          console.log(response, 'let see if user exist')
+
           if (response.data.data) {
             toast.success("Welcome back!", {
               position: "top-right",

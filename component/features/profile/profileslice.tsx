@@ -49,7 +49,8 @@ export const createProfile = createAsyncThunk(
           },
         }
       );
-
+      console.log(response , 'response from the create profile page');
+      
       return response.data;
     } catch (error: any) {
       return rejectWithValue(

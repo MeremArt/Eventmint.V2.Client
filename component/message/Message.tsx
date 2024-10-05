@@ -39,7 +39,7 @@ const Message: React.FC<MessageProps> = ({
     isSentByCurrentUser = true;
   }
 
-  return isSentByCurrentUser ? (
+  return !isSentByCurrentUser ? (
     <div className="messageContainer justifyEnd">
       <p className="sentText pr-10">{trimmedName}</p>
       <div className="messageBox backgroundBlue">

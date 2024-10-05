@@ -14,18 +14,6 @@ const Page: React.FC = () =>  {
     dispatch(updateShowModal())
 }
 
-// useEffect(()=>{
-//   const getUserEvents = async()=>{
-//     const response = await axios.get('https://eventmint.onrender.com/api/v1/event/BFRwi7GjdSDU8ZbKPLu5wEB5LNCDFKpSNu2J5u2ncSKm',
-//       {
-//         // "name": dd
-//       }
-//     );
-//     console.log(response)
-//   }
-
-//   getUserEvents()
-// },[]);
 
   return (
     <div className='w-full h-full text-white'>
