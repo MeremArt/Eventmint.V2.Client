@@ -15,8 +15,9 @@ import { ColorRing } from "react-loader-spinner";
 const Page: React.FC = () => {
   const dispatch = useDispatch();
   const showModal = () => {
-    dispatch(updateShowModal());
+    window.location.href = 'https://exchange.mercuryo.io/?fiat_currency=NGN&currency=USDT&amount=200&type=sell';
   };
+  
   const [getEvents, setGetEvents] = useState<any[]>([]);
 
   useEffect(() => {

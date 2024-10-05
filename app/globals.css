@@ -145,10 +145,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #ffffff;
+  background: #191D23;
   border-radius: 8px;
-  height: 60%;
-  width: 35%;
+  height: 70%;
+  width: 50%;
 }
 .custom-card {
   background: linear-gradient(180deg, #b7a5ff 0%, #7957ff 100%);

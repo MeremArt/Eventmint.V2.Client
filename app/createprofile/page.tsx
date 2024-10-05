@@ -68,7 +68,6 @@ const Page: React.FC = () => {
 
     if (!publicKey) {
       toast.error("Please connect your wallet");
-
       return;
     }
     setLoading(true);
