@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={inter.className}>
         <ReduxProvider>
           <AppWalletProvider>
-            {/* <MobileWarning /> */}
+           
             {children}
             <ToastContainer />
           </AppWalletProvider>
