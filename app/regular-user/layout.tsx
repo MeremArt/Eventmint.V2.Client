@@ -44,7 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {/* Main content (children) */}
           <div className="w-full h-full">{children}</div>
         </div>
-        {/* Popup Modal Section */}
+       
         
           {isModalOpen && (
             <div className="w-[800px] h-[684px] bg-[#191D23]  ">
