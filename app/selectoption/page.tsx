@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { Typography } from "@/component/typogrphy";
 import Image from "next/image";
 import sponsorr from "@/component/svgs/NewImages/boy-dynamic-color.png";
-import createEVentt from "@/component/svgs/NewImages/new-folder-dynamic-color.png";
-import inEventt from "@/component/svgs/NewImages/chat-text-dynamic-color.png";
 import colorSponsor from "@/component/svgs/NewImages/boy-color.png";
-import createColor from "@/component/svgs/NewImages/new-folder-color.png";
-import isEventColor from "@/component/svgs/NewImages/inevent-color.png";
 import TicketContain from "@/component/svgs/NewImages/Ticket-Container.png";
+import noSuitMan from "@/component/svgs/NewImages/noColorSuitMan.svg";
+import yesSuitMan from "@/component/svgs/NewImages/pngSuitMan.png";
+import Folder from "@/component/svgs/NewImages/colorFolder.png";
+import noFolder from '@/component/svgs/NewImages/noColorFolder.png';
+
 
 const Page: React.FC = () => {
   const router = useRouter();
@@ -74,7 +75,7 @@ const Page: React.FC = () => {
             />
             <div>
               <Image
-                src={sponsor ? colorSponsor : sponsorr}
+                src={sponsor ? yesSuitMan : noSuitMan}
                 alt="sponsor"
                 height={182.857}
                 width={182.857}
@@ -102,7 +103,7 @@ const Page: React.FC = () => {
             }`}
             onMouseEnter={() => handleMouseEnter("createEvent")}
             onMouseLeave={handleMouseLeave}
-            onClick={() => router.push("/dashboard")}
+            onClick={() => router.push('/dashboard')}
             style={{
               transform: hovered === "createEvent" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",
@@ -116,7 +117,7 @@ const Page: React.FC = () => {
             />
             <div>
               <Image
-                src={createEvent ? createColor : createEVentt}
+                src={createEvent ? Folder : noFolder}
                 alt="create event"
                 height={182.857}
                 width={182.857}
@@ -130,7 +131,7 @@ const Page: React.FC = () => {
                     : "text-[var(--Neutral-Neutral-600,#4B5768)]"
                 } text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
-                Create Event
+                Event Manager
               </Typography>
             </div>
           </div>
@@ -158,7 +159,7 @@ const Page: React.FC = () => {
             />
             <div>
               <Image
-                src={inEvent ? isEventColor : inEventt}
+                src={inEvent ? colorSponsor : sponsorr}
                 alt="in event"
                 height={182.857}
                 width={182.857}
@@ -172,7 +173,7 @@ const Page: React.FC = () => {
                     : "text-[var(--Neutral-Neutral-600,#4B5768)]"
                 }  text-center font-ubuntu text-[25.6px] font-normal leading-[31.086px]`}
               >
-                In-event Chat
+                Regular User
               </Typography>
             </div>
           </div>
