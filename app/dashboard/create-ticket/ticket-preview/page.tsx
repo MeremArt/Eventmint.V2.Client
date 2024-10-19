@@ -96,7 +96,7 @@ export default function Page() {
 
     try {
       const response = await axios.post(
-        `https://procyon-labs-server.vercel.app/api/v1/event/${formObject.userId}`,
+        `https://procyon-labs-server.onrender.com/api/v1/event/${formObject.userId}`,
         formObject,
         {
           headers: {

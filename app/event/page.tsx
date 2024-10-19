@@ -46,6 +46,7 @@ const Page: React.FC = () => {
                 onChange={(event) => setRoom(event.target.value)}
               />
             </div>
+
             <div className="flex items-center justify-between">
               <Link
                 className="w-full"
