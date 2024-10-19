@@ -81,7 +81,7 @@ export default function Page() {
 
     try {
       const response = await fetch(
-        "https://procyon-labs-server.onrender.com/api/v1/event/upload",
+        "https://eventmint.fun/api/v1/event/upload",
         {
           method: "POST",
           body: formData,

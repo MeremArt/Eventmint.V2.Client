@@ -31,7 +31,7 @@ const Page = () => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `https://procyon-labs-server.vercel.app/api/v1/user/${publicKey.toString()}`
+            `https://eventmint.fun/api/v1/user/${publicKey.toString()}`
           );
           const data = await response.json();
           if (data.success) {

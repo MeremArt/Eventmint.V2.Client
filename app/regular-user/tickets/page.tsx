@@ -24,7 +24,7 @@ const Page: React.FC = () => {
     const getAllEvents = async () => {
       try {
         const response = await axios.get(
-          "https://procyon-labs-server.onrender.com/api/v1/event/getevents"
+          "https://eventmint.fun/api/v1/event/getevents"
         );
         const { events, message } = response.data;
         console.log(response.data);
