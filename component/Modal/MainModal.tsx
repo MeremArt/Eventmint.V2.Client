@@ -27,7 +27,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
       if (connected && publicKey) {
         try {
           const response = await axios.get(
-            `https://procyon-labs-server.onrender.com/api/v1/user/exists/${publicKey.toString()}`
+            `https://eventmint.fun/api/v1/user/exists/${publicKey.toString()}`
           );
 
           console.log(response, 'let see if user exist')

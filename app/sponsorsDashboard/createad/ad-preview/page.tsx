@@ -90,7 +90,7 @@ export default function Page() {
 
     try {
       const response = await axios.post(
-        `https://procyon-labs-server.onrender.com/api/v1/sponsor/${getUserid}`,
+        `https://eventmint.fun/api/v1/sponsor/${getUserid}`,
         formObject,
         {
           headers: {
