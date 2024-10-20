@@ -26,6 +26,9 @@ export default function Page() {
   const ticketState = useSelector((state: any) => state.ticketDetail);
   const [getUserid, setGetUserid] = useState<string | null>("");
 
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+
+
   interface cloudinaryInstance {
     CLOUD_NAME: string;
     API_KEY_CLOUD: Number;
@@ -96,7 +99,7 @@ export default function Page() {
 
     try {
       const response = await axios.post(
-        `https://eventmint.fun/api/v1/event/${formObject.userId}`,
+        `${BACKEND_API}api/v1/event/${formObject.userId}`,
         formObject,
         {
           headers: {

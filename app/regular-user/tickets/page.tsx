@@ -19,12 +19,13 @@ const Page: React.FC = () => {
   };
   
   const [getEvents, setGetEvents] = useState<any[]>([]);
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
 
   useEffect(() => {
     const getAllEvents = async () => {
       try {
         const response = await axios.get(
-          "https://eventmint.fun/api/v1/event/getevents"
+          `${BACKEND_API}api/v1/event/getevents`
         );
         const { events, message } = response.data;
         console.log(response.data);

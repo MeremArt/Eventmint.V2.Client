@@ -24,6 +24,10 @@ export default function Page() {
   const placeholder = "/placeholder.jpg";
   const ticketState = useSelector((state: any) => state.sponsorTicketDetail);
   const [getUserid, setGetUserid] = useState<string | null>("");
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+
+
+  
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -90,7 +94,7 @@ export default function Page() {
 
     try {
       const response = await axios.post(
-        `https://eventmint.fun/api/v1/sponsor/${getUserid}`,
+        `${BACKEND_API}api/v1/sponsor/${getUserid}`,
         formObject,
         {
           headers: {

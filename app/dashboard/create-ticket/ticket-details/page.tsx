@@ -27,6 +27,10 @@ export default function Page() {
   const router = useRouter();
   const { publicKey } = useWallet();
 
+const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+
+
+
   const {
     KeyMessage,
     ticketDescription,
@@ -113,7 +117,7 @@ export default function Page() {
 
     try {
       const response = await fetch(
-        "https://eventmint.fun/api/v1/event/upload",
+        `${BACKEND_API}api/v1/event/upload`,
         {
           method: "POST",
           body: formData,

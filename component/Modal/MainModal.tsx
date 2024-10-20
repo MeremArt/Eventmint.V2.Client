@@ -21,13 +21,14 @@ type MainModalProps = {
 export default function MainModal({ closeModal }: MainModalProps) {
   const { connected, publicKey } = useWallet();
   const router = useRouter();
-
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+  
   useEffect(() => {
     const checkIfUserExists = async () => {
       if (connected && publicKey) {
         try {
           const response = await axios.get(
-            `https://eventmint.fun/api/v1/user/exists/${publicKey.toString()}`
+            `${BACKEND_API}api/v1/user/exists/${publicKey.toString()}`
           );
 
           console.log(response, 'let see if user exist')
