@@ -38,8 +38,8 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className="h-full bg-[#191D23] flex items-center justify-center">
-      <div className="flex w-[1142px] h-[680px] px-[48px] py-[32px] flex-col justify-center items-center gap-[64px] flex-shrink-0">
+    <div className="h-screen bg-[#191D23] flex items-center justify-center">
+      <div className="flex  px-[48px] py-[32px] flex-col justify-center items-center gap-[64px] flex-shrink-0">
         <div>
           <Typography
             variant="h4"
