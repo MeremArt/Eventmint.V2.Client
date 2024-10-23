@@ -30,7 +30,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
             `https://eventmint.fun/api/v1/user/exists/${publicKey.toString()}`
           );
 
-          console.log(response, 'let see if user exist')
+          console.log(response, "let see if user exist");
 
           if (response.data.data) {
             toast.success("Welcome back!", {
