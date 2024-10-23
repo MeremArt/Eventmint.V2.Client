@@ -10,8 +10,7 @@ import TicketContain from "@/component/svgs/NewImages/Ticket-Container.png";
 import noSuitMan from "@/component/svgs/NewImages/noColorSuitMan.svg";
 import yesSuitMan from "@/component/svgs/NewImages/pngSuitMan.png";
 import Folder from "@/component/svgs/NewImages/colorFolder.png";
-import noFolder from '@/component/svgs/NewImages/noColorFolder.png';
-
+import noFolder from "@/component/svgs/NewImages/noColorFolder.png";
 
 const Page: React.FC = () => {
   const router = useRouter();
@@ -103,7 +102,7 @@ const Page: React.FC = () => {
             }`}
             onMouseEnter={() => handleMouseEnter("createEvent")}
             onMouseLeave={handleMouseLeave}
-            onClick={() => router.push('/dashboard')}
+            onClick={() => router.push("/dashboard")}
             style={{
               transform: hovered === "createEvent" ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.3s ease",

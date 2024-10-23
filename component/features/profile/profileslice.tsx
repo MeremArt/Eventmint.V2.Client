@@ -41,7 +41,7 @@ export const createProfile = createAsyncThunk(
   ) => {
     try {
       const response = await axios.post(
-        `https://eventmint.onrender.com/api/v1/user/${publicKey}`,
+        `https://eventmint.fun/api/v1/user/${publicKey}`,
         profileData,
         {
           headers: {
@@ -49,8 +49,8 @@ export const createProfile = createAsyncThunk(
           },
         }
       );
-      console.log(response , 'response from the create profile page');
-      
+      console.log(response, "response from the create profile page");
+
       return response.data;
     } catch (error: any) {
       return rejectWithValue(

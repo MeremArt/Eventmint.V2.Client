@@ -31,7 +31,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
             `${BACKEND_API}api/v1/user/exists/${publicKey.toString()}`
           );
 
-          console.log(response, 'let see if user exist')
+          console.log(response, "let see if user exist");
 
           if (response.data.data) {
             toast.success("Welcome back!", {
