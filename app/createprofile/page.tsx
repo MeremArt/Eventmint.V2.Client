@@ -29,6 +29,9 @@ const Page: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch();
 
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+
+
   useEffect(() => {
     if (status === "succeeded") {
       router.push("/selectoption");
@@ -48,7 +51,7 @@ const Page: React.FC = () => {
 
     try {
       const response = await axios.post(
-        `https://eventmint.fun/api/v1/user/upload`,
+        `${BACKEND_API}api/v1/user/upload`,
         formData,
         {
           headers: {

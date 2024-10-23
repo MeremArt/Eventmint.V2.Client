@@ -14,7 +14,9 @@ import "react-toastify/dist/ReactToastify.css";
 const Page = () => {
   const { publicKey } = useWallet();
   const dispatch = useDispatch();
-
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+ 
+  
   const notify = () => toast("Coming Soon");
   const [profile, setProfile] = useState({
     _id: "",
@@ -31,7 +33,7 @@ const Page = () => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `https://eventmint.fun/api/v1/user/${publicKey.toString()}`
+            `${BACKEND_API}api/v1/user/${publicKey.toString()}`
           );
           const data = await response.json();
           if (data.success) {
