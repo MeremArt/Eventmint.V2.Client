@@ -26,6 +26,7 @@ export default function Page() {
   const router = useRouter();
   const { publicKey } = useWallet();
   const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+
   const {
     KeyMessage,
     ticketDescription,
@@ -81,18 +82,18 @@ export default function Page() {
 
     try {
       const response = await fetch(
-        `${BACKEND_API}/api/v1/event/upload`,
+        `${BACKEND_API}api/v1/event/upload`,
         {
           method: "POST",
           body: formData,
         }
       );
       const results = await response.json();
-      console.log(results, "this is the results i am looking for");
+      // console.log(results, "this is the results i am looking for");
       if (results.success) {
         const { imageUrl } = results;
         dispatch(sponsorTicketAction.updateImageUrl(imageUrl));
-        console.log(results, "get this shit");
+        console.log(imageUrl, "get this shit");
       }
     } catch (error) {
       console.log("Error uploading image:", error);

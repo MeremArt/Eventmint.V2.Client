@@ -42,8 +42,13 @@ const menuItems: MenuCategory[] = [
       },
 
       {
-        title: "Event Ad",
+        title: "Sponsor Ad",
         path: "/sponsorsDashboard/tickets",
+        icon: <HiTicket />,
+      },
+      {
+        title: "Event Ad",
+        path: "/sponsorsDashboard/pitch-deck",
         icon: <HiTicket />,
       },
     ],

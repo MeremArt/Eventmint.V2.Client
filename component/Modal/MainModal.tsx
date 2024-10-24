@@ -21,11 +21,16 @@ type MainModalProps = {
 export default function MainModal({ closeModal }: MainModalProps) {
   const { connected, publicKey } = useWallet();
   const router = useRouter();
-  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
   
+
+  
+  const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
+  console.log(BACKEND_API);
+
   useEffect(() => {
     const checkIfUserExists = async () => {
       if (connected && publicKey) {
+        localStorage.setItem('walletKey', publicKey.toString());
         try {
           const response = await axios.get(
             `${BACKEND_API}api/v1/user/exists/${publicKey.toString()}`
@@ -91,7 +96,7 @@ export default function MainModal({ closeModal }: MainModalProps) {
     };
 
     checkIfUserExists();
-  }, [connected, publicKey, router]);
+  }, [connected, publicKey, router, BACKEND_API]);
 
   return (
     <div className="backdrop">
