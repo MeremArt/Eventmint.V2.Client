@@ -106,7 +106,7 @@ export default function Page() {
       const { sponsor, blink, message } = response.data;
       dispatch(addEvent({ sponsor, blink }));
       dispatch(sponsorTicketAction.resetTicketDetails());
-      // router.push("/sponsorsDashboard/tickets");
+      router.push("/sponsorsDashboard/tickets");
       setLoading(false);
       toast.success(message, {
         position: "top-right",
