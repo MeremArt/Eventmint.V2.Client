@@ -8,7 +8,7 @@ import { createProfile } from "../../component/features/profile/profileslice";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../../mainStore/store";
-
+import "react-toastify/dist/ReactToastify.css";
 import { Button } from "@/component/button";
 import { useRouter } from "next/navigation";
 import { headers } from "next/headers";
@@ -30,7 +30,7 @@ const Page: React.FC = () => {
   const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch();
 
   const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
-
+  console.log(BACKEND_API)
 
   useEffect(() => {
     if (status === "succeeded") {
@@ -51,7 +51,7 @@ const Page: React.FC = () => {
 
     try {
       const response = await axios.post(
-        `${BACKEND_API}api/v1/user/upload`,
+        `https://eventmint.fun/api/v1/user/upload`,
         formData,
         {
           headers: {

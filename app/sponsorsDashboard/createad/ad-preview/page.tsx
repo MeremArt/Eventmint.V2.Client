@@ -15,6 +15,7 @@ import { addEvent, clearEvents } from "@/mainStore/reduxSlices/sponsorAddEvent";
 import cloudinaryInstance from "../../../../lib/cloudinary.configs";
 
 export default function Page() {
+  
   const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/dtfvdjvyr/image/upload`;
   const UPLOAD_PRESET = "ml_default"; // Replace with your Cloudinary upload preset
   const router = useRouter();
@@ -26,8 +27,6 @@ export default function Page() {
   const [getUserid, setGetUserid] = useState<string | null>("");
   const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_API;
 
-
-  
 
   interface cloudinaryInstance {
     CLOUD_NAME: string;
@@ -80,7 +79,8 @@ export default function Page() {
 
     const _id = publicKey?.toString()
     console.log(publicKey?.toString(), "publickey");
-
+    console.log(imageUrl, 'it is there');
+    
     const formObject = {
       keymessage: KeyMessage,
       image: imageUrl,
@@ -102,11 +102,11 @@ export default function Page() {
           },
         }
       );
-        console.log(response, 'let me see resres')
+        console.log(response, 'let me see res res')
       const { sponsor, blink, message } = response.data;
       dispatch(addEvent({ sponsor, blink }));
       dispatch(sponsorTicketAction.resetTicketDetails());
-      router.push("/sponsorsDashboard/tickets");
+      // router.push("/sponsorsDashboard/tickets");
       setLoading(false);
       toast.success(message, {
         position: "top-right",
