@@ -37,7 +37,7 @@ const addFunction =(a:number,b:number)=>{
 console.log(addFunction(4,6))
   const shortenedUrl = `${blink?.slice(0, 20)}...`;
   return (
-    <div className="text-white flex w-fit flex-col items-start gap-2 border border-[#323A46] rounded-[24px] bg-[#0D0F11]">
+    <div className="text-white flex w-fit flex-col items-start gap-2 border border-[#323A46] rounded-[24px] bg-[#0D0F11] max-w-[308px]">
       <div className=" relative flex h-[168px] justify-end items-end gap-1 self-stretch">
       {image && (
           <Image

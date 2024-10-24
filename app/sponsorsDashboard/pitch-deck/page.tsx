@@ -16,8 +16,9 @@ const Page = () => {
   const [postPerPage] = useState(6);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [resObj, setResObj] = useState<any[]>([]);
-    const { publicKey } = useWallet();
-    console.log(publicKey, 'public key')
+  const { publicKey } = useWallet();
+  const walletKey = localStorage.getItem('walletKey')
+  console.log(walletKey,'wallet');
 
   useEffect(()=>{
         const getPitchDeck =async() => {
@@ -58,7 +59,11 @@ const Page = () => {
         </div>
         ):(
           <div className="w-full flex items-center justify-center h-screen">
-              <div className="text-white text-xl">No pitch-deck yet.</div>
+              {resObj.length === 0 ?(
+                <div className="text-white text-xl">No pitch-deck yet.</div>
+              ):(
+                <div className="text-white text-xl">loading ...</div>
+              )}
         </div>
         )}
         <div className="flex px-6 py-8 justify-end items-center gap-8 self-stretch">
