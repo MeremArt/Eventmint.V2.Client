@@ -17,9 +17,7 @@ const Page = () => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [resObj, setResObj] = useState<any[]>([]);
   const { publicKey } = useWallet();
-  const walletKey = localStorage.getItem('walletKey')
-  console.log(walletKey,'wallet');
-
+  
   useEffect(()=>{
         const getPitchDeck =async() => {
           const walletKey = localStorage.getItem('walletKey')
